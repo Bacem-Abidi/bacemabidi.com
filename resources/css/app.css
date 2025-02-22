@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('fonts/JetBrainsMono-Regular.ttf');
+}
+

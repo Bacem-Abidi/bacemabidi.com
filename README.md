@@ -96,8 +96,4 @@ Follow these steps to set up the project locally:
     ```bash
     npm run dev
     ```
-8. **Start the Laravel development server**:
-    ```bash
-    php artisan serve
-    ```
-9. **Start the server from xampp and navigate to** http://localhost/bacemabidi.com/public
+8. **Start the server from xampp and navigate to** http://localhost/bacemabidi.com/public

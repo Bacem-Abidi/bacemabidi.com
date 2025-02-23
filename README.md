@@ -84,11 +84,11 @@ Follow these steps to set up the project locally:
     DB_PASSWORD=
     ```
 
-5. **php artisan key:generate**:
+5. **Generate application Key**:
     ```bash
     php artisan key:generate
     ```
-6. **php artisan key:generate**:
+6. **Run database migration**:
     ```bash
     php artisan migrate
     ```

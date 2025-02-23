@@ -1,4 +1,4 @@
-<footer class="bg-background font-custom">
+<footer class="bg-background">
     <div class="h-[1px] w-full bg-gradient-to-r from-background via-zinc-700 to-background"></div>
     <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -14,8 +14,8 @@
 
                 <ul class="mt-8 flex gap-6">
                     <li class="mt-0.5">
-                        <a href="#" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                        <a href="https://www.linkedin.com/in/abidi-bacem-2b6718337/" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition hover:text-cyan dark:text-gray-200">
                             <span class="sr-only">LinkedIn</span>
 
                             <svg class="size-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -27,8 +27,8 @@
                     </li>
 
                     <li>
-                        <a href="#" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                        <a href="https://github.com/Bacem-Abidi" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition hover:text-teal dark:text-gray-200">
                             <span class="sr-only">GitHub</span>
 
                             <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -40,8 +40,8 @@
                     </li>
 
                     <li>
-                        <a href="#" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                        <a href="https://www.instagram.com/_abidi_bacem/" rel="noreferrer" target="_blank"
+                            class="text-gray-700 transition hover:text-pink dark:text-gray-200">
                             <span class="sr-only">Instagram</span>
 
                             <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -55,107 +55,103 @@
             </div>
 
             <div class="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+                <!-- Services -->
                 <div>
                     <p class="text-white">Services</p>
-
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                1on1 Coaching
+                            <a href="/web-development"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Web Development
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Company Review
+                            <a href="/ui-ux-design"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                UI/UX Design
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Accounts Review
+                            <a href="/consulting" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Consulting
                             </a>
                         </li>
-
                     </ul>
                 </div>
 
+                <!-- About -->
                 <div>
-                    <p class="text-white">Company</p>
-
+                    <p class="text-white">About</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                About
+                            <a href="/about" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                About Me
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Meet the Team
+                            <a href="/portfolio" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Portfolio
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Accounts Review
+                            <a href="/testimonials"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Testimonials
                             </a>
                         </li>
                     </ul>
                 </div>
 
+                <!-- Helpful Links -->
                 <div>
                     <p class="text-white">Helpful Links</p>
-
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                            <a href="/blog" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                                 Contact
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                            <a href="/faq" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
                                 FAQs
                             </a>
                         </li>
-
-                        <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Live Chat
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
+                <!-- Legal -->
                 <div>
                     <p class="text-white">Legal</p>
-
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Accessibility
+                            <a href="/privacy-policy"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Privacy Policy
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Returns Policy
+                            <a href="/terms-of-service"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Terms of Service
                             </a>
                         </li>
-
-                        <li>
-                            <a href="#" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Refund Policy
+                        {{-- <li>
+                            <a href="/cookie-policy"
+                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                                Cookie Policy
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <p class="text-xs text-zinc-400">
-            &copy; {{ date('Y') }}. Made with ❤️ By Me. All rights reserved.
-        </p>
-    </div>
+            <p class="text-xs text-zinc-400">
+                &copy; {{ date('Y') }}. Made with ❤️ By Me. All rights reserved.
+            </p>
+        </div>
 </footer>

@@ -12,7 +12,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                // sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                robotoMono: ['Roboto Mono', ...defaultTheme.fontFamily.sans], // Add Roboto as the default sans-serif font
+                ubuntuMono: ['Ubuntu Mono', ...defaultTheme.fontFamily.mono], // Add Ubuntu Mono as the default monospace font
                 custom: ["MyCustomFont", "CustomFont", "Consolas", "Courier New", "monospace"], // Add your font here
             },
             colors: {

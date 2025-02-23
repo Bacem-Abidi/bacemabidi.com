@@ -15,7 +15,7 @@
                 <ul class="mt-8 flex gap-6">
                     <li class="mt-0.5">
                         <a href="https://www.linkedin.com/in/abidi-bacem-2b6718337/" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:text-cyan dark:text-gray-200">
+                            class="transition duration-500 hover:text-cyan">
                             <span class="sr-only">LinkedIn</span>
 
                             <svg class="size-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,7 +28,7 @@
 
                     <li>
                         <a href="https://github.com/Bacem-Abidi" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:text-teal dark:text-gray-200">
+                            class="transition duration-500 hover:text-teal">
                             <span class="sr-only">GitHub</span>
 
                             <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -41,7 +41,7 @@
 
                     <li>
                         <a href="https://www.instagram.com/_abidi_bacem/" rel="noreferrer" target="_blank"
-                            class="text-gray-700 transition hover:text-pink dark:text-gray-200">
+                            class="transition duration-500 hover:text-pink">
                             <span class="sr-only">Instagram</span>
 
                             <svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -57,23 +57,21 @@
             <div class="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
                 <!-- Services -->
                 <div>
-                    <p class="text-white">Services</p>
+                    <p class="text-white">My Work</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="/web-development"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Web Development
+                            <a href="#" class="transition hover:text-cyan">
+                                Coding Projects
                             </a>
                         </li>
                         <li>
-                            <a href="/ui-ux-design"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                UI/UX Design
+                            <a href="#" class="transition hover:text-cyan">
+                                3D Projects
                             </a>
                         </li>
                         <li>
-                            <a href="/consulting" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Consulting
+                            <a href="#" class="transition hover:text-cyan">
+                                Photography
                             </a>
                         </li>
                     </ul>
@@ -84,19 +82,18 @@
                     <p class="text-white">About</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="/about" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                            <a href="#" class="transition hover:text-cyan">
                                 About Me
                             </a>
                         </li>
                         <li>
-                            <a href="/portfolio" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Portfolio
+                            <a href="#" class="transition hover:text-cyan">
+                                Skills
                             </a>
                         </li>
                         <li>
-                            <a href="/testimonials"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Testimonials
+                            <a href="#" class="transition hover:text-cyan">
+                                Contact
                             </a>
                         </li>
                     </ul>
@@ -104,21 +101,19 @@
 
                 <!-- Helpful Links -->
                 <div>
-                    <p class="text-white">Helpful Links</p>
+                    <p class="text-white">Quick Links</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="/blog" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Blog
+                            <a href="#" class="transition hover:text-cyan">
+                                Blogs
                             </a>
                         </li>
+
+
                         <li>
-                            <a href="/contact" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Contact
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/faq" class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                FAQs
+                            <a href="https://github.com/Bacem-Abidi/bacemabidi.com" class="transition hover:text-cyan"
+                                target="_blank">
+                                Source Code
                             </a>
                         </li>
                     </ul>
@@ -129,23 +124,15 @@
                     <p class="text-white">Legal</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="/privacy-policy"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                            <a href="#" class="transition hover:text-cyan">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="/terms-of-service"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
+                            <a href="#" class="transition hover:text-cyan">
                                 Terms of Service
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="/cookie-policy"
-                                class="text-gray-700 transition hover:opacity-75 dark:text-gray-200">
-                                Cookie Policy
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>

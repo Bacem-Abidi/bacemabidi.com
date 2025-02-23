@@ -21,7 +21,7 @@
         rel="stylesheet">
 </head>
 
-<body class="bg-background text-text font-robotoMono">
+<body class="bg-background text-text font-robotoMono overflow-x-hidden">
     @include('partials.nav')
     <main class="">
         @yield('content')

@@ -31,6 +31,14 @@ export default {
                 tealTransparent: 'rgba(21, 238, 253, 0.2)',
                 gray: 'rgb(173, 181, 189)',
             },
+            backdropBlur: {
+                'md': '12px',
+                'lg': '16px',
+            },
+            scale: {
+                '100': '1', // Full scale
+                '200': '2', // Full scale
+            },
         },
     },
     plugins: [],

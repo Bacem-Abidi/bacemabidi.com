@@ -1,15 +1,15 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes React and other helpers. It's a great starting point while
+ * building robust, powerful web applications using React + Laravel.
+ */
+
 import './bootstrap';
 
-document.addEventListener('scroll', () => {
-    const navBg = document.getElementById('navBg');
-    const scrollPosition = window.scrollY;
+/**
+ * Next, we will create a fresh React component instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-    if (scrollPosition > 50) {
-        navBg.classList.remove('h-full', 'w-full', 'rounded-full', 'bg-secondaryBackground');
-        navBg.classList.add('h-14', 'w-screen', 'rounded-none', 'bg-background', 'bg-opacity-60');
-    } else {
-        navBg.classList.remove('h-14', 'w-screen', 'rounded-none', 'bg-background', 'bg-opacity-60');
-        navBg.classList.add('h-full', 'w-full', 'rounded-full','bg-secondaryBackground');
-    }
-
-});
+import './components/globe';

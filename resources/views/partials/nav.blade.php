@@ -1,6 +1,6 @@
 <div class="sticky inset-x-0 top-0 z-30 w-full transition-all">
     <div
-        class="container relative z-10 h-14 items-center justify-between mx-auto max-w-screen-xl space-y-8 px-4 sm:px-6 lg:px-8">
+        class="container relative z-10 h-14 items-center justify-between mx-auto max-w-screen-xl space-y-8 px-4">
         <div class="flex h-14 items-center justify-between">
             <a href="{{ route('home') }}" class="text-xl font-medium grow basis-0">BACEM ABIDI</a>
             <nav class="relative block" data-orientation="horizantal">

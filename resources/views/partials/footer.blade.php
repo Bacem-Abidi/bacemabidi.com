@@ -1,6 +1,6 @@
 <footer class="bg-background">
     <div class="h-[1px] w-full bg-gradient-to-r from-background via-zinc-700 to-background"></div>
-    <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+    <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 lg:space-y-16">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
                 <p class=" text-lg leading-none text-white"> Bacem Abidi

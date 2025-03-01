@@ -92,7 +92,7 @@ Follow these steps to set up the project locally:
     ```bash
     php artisan migrate
     ```
-7. **Run the Tailwind development server**:
+7. **Run the development server**:
     ```bash
     npm run dev
     ```

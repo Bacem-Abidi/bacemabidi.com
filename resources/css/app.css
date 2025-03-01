@@ -7,3 +7,15 @@
     src: url('fonts/JetBrainsMono-Regular.ttf');
 }
 
+.animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0);
+      }
+      100% {
+        transform: translate(calc(-100% - var(--gap)));
+      }
+}

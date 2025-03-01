@@ -30,6 +30,7 @@ export default {
                 pinkTransparent: 'rgba(255, 0, 179, 0.901)',
                 tealTransparent: 'rgba(21, 238, 253, 0.2)',
                 gray: 'rgb(173, 181, 189)',
+                grayBright: 'rgb(183, 191, 199)',
             },
             backdropBlur: {
                 'md': '12px',

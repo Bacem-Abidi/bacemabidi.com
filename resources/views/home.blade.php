@@ -84,11 +84,43 @@
                 </div>
             </div>
 
-
+            {{-- Photography --}}
             <div
                 class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset]">
 
-
+                <div>
+                    <div
+                        class="absolute right-0 bottom-[-30px] origin-bottom translate-x-0 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105">
+                        <div class="relative w-full overflow-hidden rounded-[11px]">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="{{ asset('images/home/sky-2.jpg') }}">
+                                <img loading="lazy" width="1600" height="412" decoding="async" data-nimg="1"
+                                    class="grayscale group-hover:grayscale-0 relative z-10 rounded-[11px] transition-opacity duration-500 ease-in-out"
+                                    style="color: transparent;" srcset="{{ asset('images/home/sky-1.jpg') }}"
+                                    src="{{ asset('images/home/sky-1.jpg') }}">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
+                    <svg class="size-10 md:max-lg:size-8 text-text transition-all duration-300 ease-in-out group-hover:scale-75"
+                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 13V17C21 18.1046 20.1046 19 19 19H9M5 19C3.89543 19 3 18.1046 3 17V9C3 7.89543 3.89543 7 5 7H7.5C8.05228 7 8.5 6.55228 8.5 6C8.5 5.44772 8.94772 5 9.5 5H14.5C15.0523 5 15.5 5.44772 15.5 6C15.5 6.55228 15.9477 7 16.5 7H19C20.1046 7 21 7.89543 21 9M9 13C9 14.6569 10.3431 16 12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-text">Photography</h3>
+                    <p class="max-w-sm text-grayBright text-sm">A hobby that lets me see the world differently.
+                    </p>
+                </div>
+                <div
+                    class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group">
+                    <button
+                        class="inline-flex items-center justify-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ring-offset-background select-none active:scale-[0.98] hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md pointer-events-auto"><a
+                            class="flex items-center" href="#">View More <i
+                                class="fa-solid fa-arrow-right ml-2 h-4 w-4 mt-1"></i></a></button>
+                </div>
             </div>
 
 

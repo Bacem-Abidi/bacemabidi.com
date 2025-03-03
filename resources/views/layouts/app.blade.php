@@ -25,11 +25,11 @@
 </head>
 
 <body class="bg-background text-text font-robotoMono overflow-x-hidden">
-    @include('partials.nav')
+    @include('components.nav')
     <main class="">
         @yield('content')
     </main>
-    @include('partials.footer')
+    @include('components.footer')
 </body>
 
 </html>

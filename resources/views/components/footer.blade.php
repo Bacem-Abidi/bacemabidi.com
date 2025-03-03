@@ -60,17 +60,17 @@
                     <p class="text-white">My Work</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{route('projects/coding-projects')}}" class="transition hover:text-cyan">
                                 Coding Projects
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{route('projects/3d-projects')}}" class="transition hover:text-cyan">
                                 3D Projects
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{route('projects/photography')}}" class="transition hover:text-cyan">
                                 Photography
                             </a>
                         </li>
@@ -82,17 +82,12 @@
                     <p class="text-white">About</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{route('about')}}" class="transition hover:text-cyan">
                                 About Me
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
-                                Skills
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{route('contact')}}" class="transition hover:text-cyan">
                                 Contact
                             </a>
                         </li>
@@ -104,8 +99,8 @@
                     <p class="text-white">Quick Links</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
-                                Blogs
+                            <a href="{{route('blog')}}" class="transition hover:text-cyan">
+                                Blog
                             </a>
                         </li>
 
@@ -124,12 +119,12 @@
                     <p class="text-white">Legal</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{ route('legal/privacy-policy') }}" class="transition hover:text-cyan">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="transition hover:text-cyan">
+                            <a href="{{ route('legal/terms-of-service') }}" class="transition hover:text-cyan">
                                 Terms of Service
                             </a>
                         </li>

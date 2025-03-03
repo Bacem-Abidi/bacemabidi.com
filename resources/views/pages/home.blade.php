@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page')
+@section('title', 'Home')
 
 @section('content')
     <section class="h-screen container flex items-center justify-left mx-auto max-w-screen-xl px-4">
@@ -111,7 +111,7 @@
                     class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group">
                     <button
                         class="inline-flex items-center justify-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ring-offset-background select-none active:scale-[0.98] hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md pointer-events-auto"><a
-                            class="flex items-center" href="#">Read More <i
+                            class="flex items-center" href="{{ route('blog') }}">Read More <i
                                 class="fa-solid fa-arrow-right ml-2 h-4 w-4 mt-1"></i></a></button>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                     class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group">
                     <button
                         class="inline-flex items-center justify-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ring-offset-background select-none active:scale-[0.98] hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md pointer-events-auto"><a
-                            class="flex items-center" href="#">View More <i
+                            class="flex items-center" href="{{ route('projects/photography') }}">View More <i
                                 class="fa-solid fa-arrow-right ml-2 h-4 w-4 mt-1"></i></a></button>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                     class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group">
                     <button
                         class="inline-flex items-center justify-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ring-offset-background select-none active:scale-[0.98] hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md pointer-events-auto"><a
-                            class="flex items-center" href="#">Discover More <i
+                            class="flex items-center" href="{{ route('projects/3d-projects') }}">Discover More <i
                                 class="fa-solid fa-arrow-right ml-2 h-4 w-4 mt-1"></i></a></button>
                 </div>
             </div>
@@ -218,7 +218,7 @@
                             @for ($i = 0; $i < 4; $i++)
                                 <div
                                     class="flex shrink-0 justify-around [gap:var(--gap)] motion-reduce:animate-none animate-marquee flex-row">
-                                    @include('components.svg-icons')
+                                    @include('partials.svg-icons')
                                 </div>
                             @endfor
                         </div>

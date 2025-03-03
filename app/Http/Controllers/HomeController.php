@@ -16,6 +16,6 @@ class HomeController extends Controller
 
         $skills = ['Laravel', 'Flutter', 'PHP', 'Java', 'Android Development'];
 
-        return view('home', compact('projects', 'skills'));
+        return view('pages.home', compact('projects', 'skills'));
     }
 }

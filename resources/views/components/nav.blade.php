@@ -16,36 +16,36 @@
                         </li>
 
                         <li class="relative group">
-                            <!-- Portfolio Dropdown Trigger -->
-                            <a href="#"
-                                class="hover:text-teal hover:text-opacity-100 transition-all duration-300 {{ in_array(Route::currentRouteName(), ['3d-projects', 'coding-projects', 'photography']) ? 'text-teal font-bold text-opacity-75' : 'text-text text-opacity-75' }}">
+                            <!-- projects Dropdown Trigger -->
+                            <a href="{{ route('projects') }}"
+                                class="hover:text-teal hover:text-opacity-100 transition-all duration-300 {{ in_array(Route::currentRouteName(), ['projects', 'projects/3d-projects', 'projects/coding-projects', 'projects/photography']) ? 'text-teal font-bold text-opacity-75' : 'text-text text-opacity-75' }}">
                                 Projects
                             </a>
                             <!-- Dropdown Menu -->
                             <ul
-                                class="absolute left-0 mt-2 space-y-2 bg-secondaryBackground backdrop-blur-lg rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[160px]">
+                                id="dropdown" class="absolute left-0 mt-2 space-y-2 bg-secondaryBackground backdrop-blur-lg rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[160px]">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('projects/coding-projects') }}"
                                         class="block px-2 py-2 text-sm text-text hover:bg-teal/10 hover:text-teal rounded-lg transition-all duration-300">Coding
                                         Projects</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('projects/3d-projects') }}"
                                         class="block px-4 py-2 text-sm text-text hover:bg-teal/10 hover:text-teal rounded-lg transition-all duration-300">3D
                                         Projects</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('projects/photography') }}"
                                         class="block px-4 py-2 text-sm text-text hover:bg-teal/10 hover:text-teal rounded-lg transition-all duration-300">Photography</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#"
-                                class="hover:text-teal hover:text-opacity-100 transition-all duration-300 {{ Route::currentRouteName() == 'about' ? 'text-teal font-bold text-opacity-75' : 'text-text text-opacity-75' }}">Blog</a>
+                            <a href="{{ route('blog') }}"
+                                class="hover:text-teal hover:text-opacity-100 transition-all duration-300 {{ Route::currentRouteName() == 'blog' ? 'text-teal font-bold text-opacity-75' : 'text-text text-opacity-75' }}">Blog</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('about') }}"
                                 class="hover:text-teal hover:text-opacity-100 transition-all duration-300 {{ Route::currentRouteName() == 'about' ? 'text-teal font-bold text-opacity-75' : 'text-text text-opacity-75' }}">About</a>
                         </li>
                     </ul>

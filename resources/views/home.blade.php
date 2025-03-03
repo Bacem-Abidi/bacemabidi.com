@@ -28,6 +28,7 @@
 
             </div>
 
+            {{-- Contact Me --}}
             <div
                 class="group relative flex flex-col justify-center overflow-hidden rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset]">
                 <div class="space-y-2 flex-col gap-1 p-6 text-center">
@@ -43,11 +44,46 @@
                 </div>
             </div>
 
+            {{-- Blog --}}
             <div
                 class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset] md:row-span-2">
 
+                <div>
+                    <div
+                        class="absolute right-0 top-0 origin-top translate-x-0 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105">
+                        <div class="relative w-full overflow-hidden rounded-[11px]">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="{{ asset('images/home/screen-shot-2.png') }}">
+                                <img loading="lazy" width="1600" height="412" decoding="async" data-nimg="1"
+                                    class="grayscale group-hover:grayscale-0 relative z-10 rounded-[11px] transition-opacity duration-500 ease-in-out"
+                                    style="color: transparent;" srcset="{{ asset('images/home/screen-shot.png') }}"
+                                    src="{{ asset('images/home/screen-shot.png') }}">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
 
+                <div
+                    class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
+                    <svg class="size-10 md:max-lg:size-8 text-text transition-all duration-300 ease-in-out group-hover:scale-75"
+                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 17H15M9 13H15M9 9H10M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H15.8C16.9201 21 17.4802 21 17.908 20.782C18.2843 20.5903 18.5903 20.2843 18.782 19.908C19 19.4802 19 18.9201 19 17.8V9M13 3L19 9M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-text">Blog</h3>
+                    <p class="max-w-sm text-grayBright text-sm">Stories from my journey as a developer and a 3D artist.
+                    </p>
+                </div>
+                <div
+                    class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group">
+                    <button
+                        class="inline-flex items-center justify-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ring-offset-background select-none active:scale-[0.98] hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md pointer-events-auto"><a
+                            class="flex items-center" href="#">Read More <i
+                                class="fa-solid fa-arrow-right ml-2 h-4 w-4 mt-1"></i></a></button>
+                </div>
             </div>
+
 
             <div
                 class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset]">

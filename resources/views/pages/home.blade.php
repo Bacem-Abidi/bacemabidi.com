@@ -3,19 +3,108 @@
 @section('title', 'Home')
 
 @section('content')
-    <section class="h-screen container flex items-center justify-left mx-auto max-w-screen-xl px-4">
-        <div class="text-left relative z-10">
-            <h1 class="text-[clamp(2rem,7vw,3rem)] font-bold leading-tight">
-                Hi, I'm Bacem.<br>
-                A <span class="text-orange">3D Blender Artist</span><br>
-                && A <span class="text-cyan">Software Engineer</span>
+    <section class="h-screen container flex items-center justify-between mx-auto max-w-screen-xl px-4">
+        <div class="text-left relative z-10 max-w-2xl">
+            <div class="mb-6 flex items-center gap-3 opacity-75">
+                <div class="h-px w-8 bg-cyan"></div>
+                <span class="text-sm uppercase tracking-widest text-cyan">Software Engineer && 3D Artist</span>
+            </div>
+
+            <h1 class="text-[clamp(2rem,7vw,3.5rem)] font-bold leading-tight">
+                Crafting Digital Realities<br>
+                Through <span class="text-orange">Code</span> &&
+                <span class="text-cyan">Creativity</span>
             </h1>
-            <p class="mb-8 mt-8 max-w-xl leading-relaxed text-text opacity-75 max-sm:text-sm">
-                I create high-quality, game-ready 3D models and build scalable web and mobile applications using
-                modern frameworks.
+
+            <p class="my-8 max-w-xl text-lg leading-relaxed text-text opacity-90">
+                Developing scalable solutions through modern frameworks and Creating game-ready 3D assets
             </p>
+
+            <div class="flex gap-4">
+                <a href="{{ route('projects') }}"
+                    class="group flex items-center rounded-full bg-cyan/10 px-6 py-3 text-cyan transition-all hover:bg-cyan/20">
+                    Explore Work
+                    <i class="fa-solid fa-arrow-right ml-2 text-sm opacity-70 transition group-hover:translate-x-1"></i>
+                </a>
+
+                <div class="h-px w-8 self-center bg-gray-600"></div>
+
+                <div class="flex gap-4 items-center">
+                    @include('partials.social-links.github', ['size' => 'size-9'])
+                    @include('partials.social-links.linkedin', ['size' => 'size-7'])
+                    @include('partials.social-links.instagram', ['size' => 'size-8'])
+                </div>
+            </div>
         </div>
 
+        <!-- Add a 3D render/artwork placeholder on the right -->
+        <div class="relative hidden lg:block w-2/5 transform-gpu group">
+            <!-- Holographic Background Effect -->
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-cyan/20 to-orange/20 animate-pulse-glow"></div>
+
+            <!-- Main Container -->
+            <div
+                class="relative z-20 h-[500px] border-2 border-cyan/30 rounded-2xl bg-background/95 backdrop-blur-xl shadow-2xl hover:shadow-cyan/10 transition-all duration-300 overflow-hidden">
+                <div class="grid grid-cols-2 divide-x divide-cyan/10 h-full">
+                    <!-- 3D Art Side - Hover to Reveal -->
+                    <div class="relative p-6 bg-gradient-to-b from-cyan/5 to-transparent">
+                        <div class="absolute inset-0 holographic-pattern opacity-10"></div>
+                        <img src="{{ asset('images/Renders/abandonedHouse/wire.png') }}"
+                            class="w-full h-full object-contain transition-all duration-500 grayscale hover:grayscale-0 scale-90 hover:scale-95"
+                            alt="3D Wireframe">
+                        <div class="absolute bottom-4 left-4 flex items-center gap-2">
+                            <span class="text-xs text-cyan font-mono">Blender 4.3.2</span>
+                            <div class="h-px w-8 bg-cyan/30"></div>
+                        </div>
+                    </div>
+
+                    <!-- Code Side - Animated Terminal -->
+                    <div class="relative p-6 bg-gradient-to-b from-orange/5 to-transparent">
+                        <!-- Animated Cursor -->
+                        <div class="absolute top-6 right-6 w-2 h-4 bg-cyan animate-blink"></div>
+
+                        <!-- Code Content -->
+                        <div class="font-mono text-sm space-y-4 text-cyan/90">
+                            <div class="flex gap-2">
+                                <span class="text-pink">$</span>
+                                <span>npm create vite@latest</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span class="text-cyan">Initializing project...</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span>✔︎ Laravel configured</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span>✔︎ React configured</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span>✔︎ Tailwind configured</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span>✔︎ Three.js installed</span>
+                            </div>
+                            <div class="flex gap-2 opacity-75">
+                                <span class="text-pink">></span>
+                                <span>Project is ready...</span>
+                            </div>
+                            <div class="mt-8 opacity-90">
+                                <span class="text-orange block mb-2">// Current Project</span>
+                                <div id="terminal"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Glow Effect -->
+            <div class="absolute inset-0 rounded-2xl glow-overlay"></div>
+        </div>
 
     </section>
 
@@ -47,7 +136,7 @@
                         </g>
                     </svg>
                     <h3 class="text-lg font-semibold text-text">Featured Project</h3>
-                    <p class="max-w-sm text-grayBright text-sm">DroidTale is my project to natively recreate the
+                    <p class="max-w-sm text-grayBright text-sm">DroidTale is my project to natively recreate
                         'Undertale' for android devices
                     </p>
                 </div>
@@ -101,7 +190,8 @@
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M9 17H15M9 13H15M9 9H10M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H15.8C16.9201 21 17.4802 21 17.908 20.782C18.2843 20.5903 18.5903 20.2843 18.782 19.908C19 19.4802 19 18.9201 19 17.8V9M13 3L19 9M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
                     </svg>
                     <h3 class="text-lg font-semibold text-text">Blog</h3>
                     <p class="max-w-sm text-grayBright text-sm">Stories from my journey as a developer and a 3D artist.

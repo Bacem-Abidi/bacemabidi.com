@@ -19,3 +19,58 @@
         transform: translate(calc(-100% - var(--gap)));
       }
 }
+
+/* Home Page Hologram Effect */
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Holographic pattern overlay */
+.holographic-pattern {
+    background-image:
+        linear-gradient(45deg, transparent 65%, #00ffff15 95%),
+        linear-gradient(-45deg, transparent 65%, #ff660015 95%);
+    background-size: 20px 20px;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s step-end infinite;
+}
+
+.glow-overlay {
+    box-shadow:
+        0 0 60px 20px #00ffff10,
+        0 0 100px 40px #ff660010;
+    opacity: 0.3;
+    filter: blur(30px);
+    transition: opacity 0.3s;
+}
+.group:hover .glow-overlay {
+    opacity: 0.5;
+}
+
+.typed-content {
+    min-height: 200px; /* Match content height */
+}
+
+/* Custom cursor styling */
+.react-type-animation__cursor {
+    color: #00ffff !important;
+    font-weight: 100 !important;
+}
+
+/* Animation timing */
+.react-type-animation span {
+    transition: opacity 0.3s ease;
+}

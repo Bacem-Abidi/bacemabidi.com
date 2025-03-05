@@ -32,6 +32,7 @@
                 <div class="flex gap-4 items-center">
                     @include('partials.social-links.github', ['size' => 'size-9'])
                     @include('partials.social-links.linkedin', ['size' => 'size-7'])
+                    @include('partials.social-links.email', ['size' => 'size-9'])
                     @include('partials.social-links.instagram', ['size' => 'size-8'])
                 </div>
             </div>
@@ -304,11 +305,11 @@
 
     </section>
 
-    {{-- Featured Projects --}}
+    {{-- Projects --}}
     <section class="container mx-auto max-w-screen-xl px-4 py-20">
         <div class="flex items-center gap-4 mb-12 justify-between">
             <div class="flex items-center gap-4">
-                <div class="h-px w-12 bg-cyan"></div>
+                <div class="h-px w-8 bg-cyan"></div>
                 <h2 class="md:text-xl sm:text-lg font-bold text-cyan">Projects</h2>
             </div>
 
@@ -323,7 +324,7 @@
 
         <div class="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
             @php
-            // Test data
+                // Test data
                 $projects = [
                     [
                         'title' => 'Project 1',

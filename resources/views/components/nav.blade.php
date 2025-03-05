@@ -1,6 +1,5 @@
 <div class="sticky inset-x-0 top-0 z-30 w-full transition-all">
-    <div
-        class="container relative z-10 h-14 items-center justify-between mx-auto max-w-screen-xl space-y-8 px-4">
+    <div class="container relative z-10 h-14 items-center justify-between mx-auto max-w-screen-xl space-y-8 px-4">
         <div class="flex h-14 items-center justify-between">
             <a href="{{ route('home') }}" class="text-xl font-medium grow basis-0">BACEM ABIDI</a>
             <nav class="relative block" data-orientation="horizantal">
@@ -22,8 +21,8 @@
                                 Projects
                             </a>
                             <!-- Dropdown Menu -->
-                            <ul
-                                id="dropdown" class="absolute left-0 mt-2 space-y-2 bg-secondaryBackground backdrop-blur-lg rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[160px]">
+                            <ul id="dropdown"
+                                class="absolute left-0 mt-2 space-y-2 bg-secondaryBackground backdrop-blur-lg rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[160px]">
                                 <li>
                                     <a href="{{ route('projects/coding-projects') }}"
                                         class="block px-2 py-2 text-sm text-text hover:bg-teal/10 hover:text-teal rounded-lg transition-all duration-300">Coding
@@ -53,7 +52,7 @@
             </nav>
             <div class="grow basis-0 justify-end flex">
                 <a href="{{ route('contact') }}"
-                    class="text-sm border border-cyan text-cyan px-4 py-1 rounded-full hover:bg-cyan hover:text-black transition-colors duration-500">Contact</a>
+                    class="text-sm bg-cyan/10 text-cyan transition-all hover:bg-cyan/20 px-5 py-2 rounded-full duration-500">Contact</a>
             </div>
         </div>
     </div>

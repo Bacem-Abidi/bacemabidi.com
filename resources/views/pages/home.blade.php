@@ -153,7 +153,7 @@
                 </div>
                 <div class="space-y-2 flex-col gap-1 p-6 text-center">
                     <a href="{{ route('contact') }}"
-                        class="md:text-sm sm:text-xl text-xl border border-cyan text-cyan md:px-4 sm:px-6 px-6 py-2 rounded-full hover:bg-cyan hover:text-black transition-colors duration-500">Contact
+                        class="md:text-sm sm:text-xl text-xl bg-cyan/10 text-cyan transition-all hover:bg-cyan/20 md:px-4 sm:px-6 px-6 py-2 rounded-full duration-500">Contact
                         Me</a>
                 </div>
             </div>
@@ -304,11 +304,58 @@
 
     </section>
 
+    {{-- Featured Projects --}}
+    <section class="container mx-auto max-w-screen-xl px-4 py-20">
+        <div class="flex items-center gap-4 mb-12 justify-between">
+            <div class="flex items-center gap-4">
+                <div class="h-px w-12 bg-cyan"></div>
+                <h2 class="md:text-xl sm:text-lg font-bold text-cyan">Projects</h2>
+            </div>
+
+            <div class="flex items-center ">
+                <a href="{{ route('projects') }}"
+                    class="group md:text-sm sm:text-xs text-xs flex items-center rounded-full bg-cyan/10 px-6 py-3 text-cyan transition-all hover:bg-cyan/20">
+                    View All Projects
+                    <i class="fa-solid fa-arrow-right ml-2 text-sm opacity-70 transition group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            @php
+            // Test data
+                $projects = [
+                    [
+                        'title' => 'Project 1',
+                        'desc' => 'this is a test description for the featured projects',
+                        'tech_stack' => ['laravel', 'node.js', 'react'],
+                        'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
+                    ],
+                    [
+                        'title' => 'Project 2',
+                        'desc' => 'this is a test description for the featured projects',
+                        'tech_stack' => ['tailwind', 'flutter', 'java'],
+                        'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
+                    ],
+                    [
+                        'title' => 'Project 3',
+                        'desc' => 'this is a test description for the featured projects',
+                        'tech_stack' => ['docker', 'blender', 'vite'],
+                        'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
+                    ],
+                    // Add more projects
+                ];
+            @endphp
+            @foreach ($projects as $project)
+                @include('components.mini-project-card', ['project' => $project])
+            @endforeach
 
 
+        </div>
 
+        <div class="mt-12 flex justify-center">
 
-
-    
+        </div>
+    </section>
 
 @endsection

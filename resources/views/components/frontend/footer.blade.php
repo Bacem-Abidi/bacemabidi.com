@@ -14,19 +14,19 @@
 
                 <ul class="mt-8 flex gap-6">
                     <li class="mt-0.5">
-                        @include('partials.social-links.linkedin', ['size' => 'size-5'])
+                        @include('partials.frontend.social-links.linkedin', ['size' => 'size-5'])
                     </li>
 
 
                     <li>
-                        @include('partials.social-links.github', ['size' => 'size-6'])
+                        @include('partials.frontend.social-links.github', ['size' => 'size-6'])
                     </li>
 
                     <li>
-                        @include('partials.social-links.instagram', ['size' => 'size-6'])
+                        @include('partials.frontend.social-links.instagram', ['size' => 'size-6'])
                     </li>
                     <li class="">
-                        @include('partials.social-links.email', ['size' => 'size-6'])
+                        @include('partials.frontend.social-links.email', ['size' => 'size-6'])
                     </li>
                 </ul>
             </div>

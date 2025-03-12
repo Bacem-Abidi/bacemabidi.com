@@ -25,11 +25,9 @@
 </head>
 
 <body class="bg-background text-text font-robotoMono overflow-x-hidden">
-    @include('components.frontend.nav')
     <main class="">
         @yield('content')
     </main>
-    @include('components.frontend.footer')
 </body>
 
 </html>

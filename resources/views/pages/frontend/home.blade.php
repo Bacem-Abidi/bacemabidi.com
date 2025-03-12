@@ -30,10 +30,10 @@
                 <div class="h-px w-8 self-center bg-gray-600"></div>
 
                 <div class="flex gap-4 items-center">
-                    @include('partials.social-links.github', ['size' => 'size-9'])
-                    @include('partials.social-links.linkedin', ['size' => 'size-7'])
-                    @include('partials.social-links.email', ['size' => 'size-9'])
-                    @include('partials.social-links.instagram', ['size' => 'size-8'])
+                    @include('partials.frontend.social-links.github', ['size' => 'size-9'])
+                    @include('partials.frontend.social-links.linkedin', ['size' => 'size-7'])
+                    @include('partials.frontend.social-links.email', ['size' => 'size-9'])
+                    @include('partials.frontend.social-links.instagram', ['size' => 'size-8'])
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div
                     class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-                    @include('partials.icons.icon-set', ['icon' => 'code'])
+                    @include('partials.frontend.icons.icon-set', ['icon' => 'code'])
                     <h3 class="text-lg font-semibold text-text">Featured Project</h3>
                     <p class="max-w-sm text-grayBright text-sm">DroidTale is my project to natively recreate
                         'Undertale' for android devices
@@ -180,7 +180,7 @@
 
                 <div
                     class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-                    @include('partials.icons.icon-set', ['icon' => 'blog'])
+                    @include('partials.frontend.icons.icon-set', ['icon' => 'blog'])
                     <h3 class="text-lg font-semibold text-text">Blog</h3>
                     <p class="max-w-sm text-grayBright text-sm">Stories from my journey as a developer and a 3D artist.
                     </p>
@@ -214,7 +214,7 @@
                 </div>
                 <div
                     class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-                    @include('partials.icons.icon-set', ['icon' => 'camera'])
+                    @include('partials.frontend.icons.icon-set', ['icon' => 'camera'])
                     <h3 class="text-lg font-semibold text-text">Photography</h3>
                     <p class="max-w-sm text-grayBright text-sm">A hobby that lets me see the world differently.
                     </p>
@@ -247,7 +247,7 @@
                 </div>
                 <div
                     class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-                    @include('partials.icons.icon-set', ['icon' => 'palette'])
+                    @include('partials.frontend.icons.icon-set', ['icon' => 'palette'])
                     <h3 class="text-lg font-semibold text-text">More Than Just Code</h3>
                     <p class="max-w-sm text-grayBright text-sm">A developer, a 3D artist, and a creator bringing ideas to
                         life in
@@ -273,7 +273,7 @@
                             @for ($i = 0; $i < 4; $i++)
                                 <div
                                     class="flex shrink-0 justify-around [gap:var(--gap)] motion-reduce:animate-none animate-marquee flex-row">
-                                    @include('partials.icons.tech-stack-icons')
+                                    @include('partials.frontend.icons.tech-stack-icons')
                                 </div>
                             @endfor
                         </div>
@@ -296,7 +296,7 @@
                     </div>
                 </div>
                 <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
-                    @include('partials.icons.icon-set', ['icon' => 'location'])
+                    @include('partials.frontend.icons.icon-set', ['icon' => 'location'])
                     <h3 class="text-lg font-semibold text-text">Location</h3>
                     <p class="max-w-lg text-grayBright text-sm">Currently Based In Tunisia</p>
                 </div>
@@ -351,7 +351,7 @@
                 ];
             @endphp
             @foreach ($projects as $project)
-                @include('components.mini-project-card', ['project' => $project])
+                @include('components.frontend.mini-project-card', ['project' => $project])
             @endforeach
 
 
@@ -415,7 +415,7 @@
                 ];
             @endphp
             @foreach ($blogs as $blog)
-                @include('components.mini-blog-card', ['blog' => $blog])
+                @include('components.frontend.mini-blog-card', ['blog' => $blog])
             @endforeach
 
 

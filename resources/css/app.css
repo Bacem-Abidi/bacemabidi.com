@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none;
+}
+
+
 @font-face {
     font-family: 'MyCustomFont';
     src: url('fonts/JetBrainsMono-Regular.ttf');
@@ -74,3 +79,4 @@
 .react-type-animation span {
     transition: opacity 0.3s ease;
 }
+

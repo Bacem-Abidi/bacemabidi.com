@@ -1,32 +1,22 @@
-@extends('layouts.admin')
+<x-admin-layout>
+    <div>
+        {{-- <x-jet-banner /> --}}
 
-@section('title', 'dashboard')
+        <div class="min-h-screen bg-gray-100">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-
-                    </div>
-                    <div class="card-body">
-                        @auth
-                            {{ __('Admin Status: True') }}
-
-                        @endauth
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-gray-500 text-sm">Total Users</h3>
+                        <p class="text-2xl font-bold"></p>
                     </div>
                 </div>
+
+                <!-- Add more sections (e.g., recent users) -->
             </div>
         </div>
     </div>
-@endsection
+
+</x-admin-layout>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Livewire\Admin\Dashboard;
 
 // Admin
 Auth::routes(); // This adds all auth routes (login, register, logout, etc.)
@@ -10,10 +11,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return redirect()->route('admin.dashboard'); // Redirect to /admin/dashboard
     });
-
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    // Add CRUD routes for your models (e.g., posts, products)
-    // Route::resource('posts', AdminPostController::class);
+    Route::get('/dashboard', [Dashboard::class, 'render'])->name('admin.dashboard');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

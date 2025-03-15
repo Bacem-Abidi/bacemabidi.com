@@ -6,6 +6,9 @@
     display: none;
 }
 
+.display-none {
+    @apply hidden;
+}
 
 @font-face {
     font-family: 'MyCustomFont';

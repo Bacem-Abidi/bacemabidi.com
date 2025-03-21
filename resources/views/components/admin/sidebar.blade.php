@@ -1,7 +1,8 @@
 <!-- component -->
-<div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r z-50 shadow border-gray dark:bg-background">
-    <div class="flex items-center justify-between p-5">
-        <x-admin.application-mark class="h-8 w-auto " />
+<div
+    class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r z-50 border-gray-300 dark:bg-background dark:border-gray-500">
+    <div class="flex items-center justify-between p-6 border-b border-gray-300 dark:border-gray-500">
+        <x-admin.application-mark class="font-medium text-xl text-gray-800 dark:text-gray-200 leading-tight" />
     </div>
     <div class="overflow-y-auto overflow-x-hidden flex-grow">
         <ul class="flex flex-col py-4 space-y-1">
@@ -16,44 +17,16 @@
                 </x-admin.nav-link>
             </li>
             <li>
-                <x-admin.nav-link href="#" class="" :icon="'inbox'">
-                    <span class="ml-2 text-sm tracking-wide truncate">Inbox</span>
-                    <span
-                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">New</span>
+                <x-admin.nav-link href="{{ route('admin.projects.index') }}" class="" :icon="'projects'">
+                    <span class="ml-2 text-sm tracking-wide truncate">Projects</span>
+                    {{-- <span
+                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span> --}}
                 </x-admin.nav-link>
             </li>
-            <li>
-                <x-admin.nav-link href="#" class="" :icon="'messages'">
-                    <span class="ml-2 text-sm tracking-wide truncate">Messages</span>
-                </x-admin.nav-link>
-            </li>
-            <li>
-                <x-admin.nav-link href="#" class="" :icon="'notifications'">
-                    <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
-                    <span
-                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span>
-                </x-admin.nav-link>
-            </li>
+
             <li class="px-5">
                 <div class="flex flex-row items-center h-8">
-                    <div class="text-sm font-light tracking-wide text-gray-500 dark:text-gray-300">Tasks</div>
-                </div>
-            </li>
-            <li>
-                <x-admin.nav-link href="#" class="" :icon="'tasks'">
-                    <span class="ml-2 text-sm tracking-wide truncate">Available Tasks</span>
-                </x-admin.nav-link>
-            </li>
-            <li>
-                <x-admin.nav-link href="#" class="" :icon="'clients'">
-                    <span class="ml-2 text-sm tracking-wide truncate">Clients</span>
-                    <span
-                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full">15</span>
-                </x-admin.nav-link>
-            </li>
-            <li class="px-5">
-                <div class="flex flex-row items-center h-8">
-                    <div class="text-sm font-light tracking-wide text-gray-500">Settings</div>
+                    <div class="text-sm font-light tracking-wide text-gray-500 dark:text-gray-300">Settings</div>
                 </div>
             </li>
             <li>
@@ -67,9 +40,14 @@
                 </x-admin.nav-link>
             </li>
             <li>
-                <x-admin.nav-link href="#" class="" :icon="'logout'">
+                <x-admin.nav-link href="{{ route('logout') }}" class="" :icon="'logout'"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <span class="ml-2 text-sm tracking-wide truncate">Logout</span>
+
                 </x-admin.nav-link>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
             </li>
         </ul>
     </div>

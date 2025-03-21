@@ -9,8 +9,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme-admin.js'])
@@ -19,9 +22,10 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="antialiased font-robotoMono">
     <header class="fixed top-0 w-full z-40 mx-auto">
-        <div class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mx-auto max-w-screen-4xl md:px-14 sm:px-1 px-1 py-2">
+        <div
+            class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mx-auto max-w-screen-4xl md:px-14 sm:px-1 px-1 py-2">
             <svg class="w-5 h-5 mt-1 moon-admin cursor-pointer" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -23,15 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $projects = [
-            (object) ['title' => 'Project 1', 'description' => 'Short description here.', 'image' => 'https://via.placeholder.com/300', 'link' => '#'],
-            (object) ['title' => 'Project 2', 'description' => 'Short description here.', 'image' => 'https://via.placeholder.com/300', 'link' => '#'],
-            (object) ['title' => 'Project 3', 'description' => 'Short description here.', 'image' => 'https://via.placeholder.com/300', 'link' => '#'],
-        ];
+        $apiBaseUrl = config('api.base_url');
+        // Make API request
+        $response = Http::get($apiBaseUrl.'/api/v1/projects/featured');
 
-        $skills = ['Laravel', 'Flutter', 'PHP', 'Java', 'Android Development'];
+        // Check if the request was successful
+        if ($response->successful()) {
+            $projects = $response->json()['data']; // Extract the projects array
+        } else {
+            $projects = []; // Fallback if API fails
+        }
 
-        return view('pages.frontend.home', compact('projects', 'skills'));
+        return view('pages.frontend.home', compact('projects'));
         // return view('home');
     }
 }

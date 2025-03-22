@@ -27,8 +27,8 @@
                         class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                         required> --}}
 
-                    <x-label for="title" value="{{ __('Title') }}" />
-                    <x-input name="title" id="title" class="block mt-1 w-full" type="text"
+                    <x-admin.label for="title" value="{{ __('Title') }}" />
+                    <x-admin.input name="title" id="title" class="block mt-1 w-full" type="text"
                         value="{{ old('title') }}" required />
                 </div>
 
@@ -39,8 +39,8 @@
                         class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                         required> --}}
 
-                    <x-label for="slug" value="{{ __('Slug') }}" />
-                    <x-input name="slug" id="slug" class="block mt-1 w-full" type="text"
+                    <x-admin.label for="slug" value="{{ __('Slug') }}" />
+                    <x-admin.input name="slug" id="slug" class="block mt-1 w-full" type="text"
                         value="{{ old('slug') }}" required />
                 </div>
 
@@ -57,15 +57,15 @@
                         class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                         required> --}}
 
-                    <x-label for="project_date" value="{{ __('Project Date') }}" />
-                    <x-input name="project_date" id="project_date" class="block mt-1 w-full" type="date"
+                    <x-admin.label for="project_date" value="{{ __('Project Date') }}" />
+                    <x-admin.input name="project_date" id="project_date" class="block mt-1 w-full" type="date"
                         value="{{ old('project_date') }}" required />
                 </div>
 
                 <!-- Is Published -->
                 <div class="mb-4">
                     {{-- <label class="block text-gray-700 dark:text-text text-sm font-bold mb-2">Publish Status</label> --}}
-                    <x-label for="is_published" value="{{ __('Publish Status') }}" />
+                    <x-admin.label for="is_published" value="{{ __('Publish Status') }}" />
                     <select name="is_published" id="is_published"
                         class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1">
                         <option value="1" {{ old('is_published') == 1 ? 'selected' : '' }}>Published</option>
@@ -78,19 +78,19 @@
                 <div class="mb-4">
                     <label for="featured" class="flex items-center">
                         <input type="hidden" name="featured" value="0">
-                        <x-checkbox id="featured" name="featured" value="1" :checked="old('featured')" />
+                        <x-admin.checkbox id="featured" name="featured" value="1" :checked="old('featured')" />
                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Featured') }}</span>
                     </label>
                 </div>
 
                 <!-- Description -->
                 <div class="mb-4">
-                    <x-label for="is_published" value="{{ __('Description') }}" />
+                    <x-admin.label for="is_published" value="{{ __('Description') }}" />
                     <textarea name="description" id="editor"
                         class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1"
                         rows="10">{{ old('description') }}</textarea>
                 </div>
-                <x-button>{{ __('Save Project') }}</x-button>
+                <x-admin.button>{{ __('Save Project') }}</x-admin.button>
             </div>
         </form>
     </div>

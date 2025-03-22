@@ -1,4 +1,4 @@
-<x-action-section>
+<x-admin.action-section>
     <x-slot name="title">
         {{ __('Browser Sessions') }}
     </x-slot>
@@ -57,13 +57,13 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <x-admin.button wire:click="confirmLogout" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
-            </x-button>
+            </x-admin.button>
 
-            <x-action-message class="ms-3" on="loggedOut">
+            <x-admin.action-message class="ms-3" on="loggedOut">
                 {{ __('Done.') }}
-            </x-action-message>
+            </x-admin.action-message>
         </div>
 
         <!-- Log Out Other Devices Confirmation Modal -->
@@ -77,11 +77,11 @@
 
                 <div class="mt-4" x-data="{}"
                     x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-input type="password" class="mt-1 block w-3/4" autocomplete="current-password"
+                    <x-admin.input type="password" class="mt-1 block w-3/4" autocomplete="current-password"
                         placeholder="{{ __('Password') }}" x-ref="password" wire:model="password"
                         wire:keydown.enter="logoutOtherBrowserSessions" />
 
-                    <x-input-error for="password" class="mt-2" />
+                    <x-admin.input-error for="password" class="mt-2" />
                 </div>
             </x-slot>
 
@@ -90,10 +90,10 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-button class="ms-3" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
+                <x-admin.button class="ms-3" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
-                </x-button>
+                </x-admin.button>
             </x-slot>
         </x-dialog-modal>
     </x-slot>
-</x-action-section>
+</x-admin.action-section>

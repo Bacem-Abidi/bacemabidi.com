@@ -24,8 +24,8 @@
             <div class="bg-white rounded-lg shadow p-6 dark:bg-[#1E2234]">
                 <!-- Title -->
                 <div class="mb-4">
-                    <x-label for="title" value="{{ __('Title') }}" />
-                    <x-input name="title" id="title" class="block mt-1 w-full" type="text"
+                    <x-admin.label for="title" value="{{ __('Title') }}" />
+                    <x-admin.input name="title" id="title" class="block mt-1 w-full" type="text"
                         value="{{ old('title', $project->title) }}" required />
                     {{-- @error('title')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -34,8 +34,8 @@
 
                 <!-- Slug -->
                 <div class="mb-4">
-                    <x-label for="slug" value="{{ __('Slug') }}" />
-                    <x-input name="slug" id="slug" class="block mt-1 w-full" type="text"
+                    <x-admin.label for="slug" value="{{ __('Slug') }}" />
+                    <x-admin.input name="slug" id="slug" class="block mt-1 w-full" type="text"
                         value="{{ old('slug', $project->slug) }}" required />
                     {{-- @error('slug')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -57,8 +57,8 @@
 
                 <!-- Project Date -->
                 <div class="mb-4">
-                    <x-label for="project_date" value="{{ __('Project Date') }}" />
-                    <x-input name="project_date" id="project_date" class="block mt-1 w-full" type="date"
+                    <x-admin.label for="project_date" value="{{ __('Project Date') }}" />
+                    <x-admin.input name="project_date" id="project_date" class="block mt-1 w-full" type="date"
                         value="{{ old('project_date', $project->project_date) }}" required />
                     {{-- @error('project_date')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -67,7 +67,7 @@
 
                 <!-- Is Published -->
                 <div class="mb-4">
-                    <x-label for="is_published" value="{{ __('Publish Status') }}" />
+                    <x-admin.label for="is_published" value="{{ __('Publish Status') }}" />
                     <select name="is_published" id="is_published"
                         class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1">
                         <option value="1"
@@ -86,14 +86,14 @@
                 <div class="mb-4">
                     <label for="featured" class="flex items-center">
                         <input type="hidden" name="featured" value="0">
-                        <x-checkbox id="featured" name="featured" value="1" :checked="old('featured', $project->featured ?? false)" />
+                        <x-admin.checkbox id="featured" name="featured" value="1" :checked="old('featured', $project->featured ?? false)" />
                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Featured') }}</span>
                     </label>
                 </div>
 
                 <!-- Description -->
                 <div class="mb-4">
-                    <x-label for="is_published" value="{{ __('Description') }}" />
+                    <x-admin.label for="is_published" value="{{ __('Description') }}" />
                     <textarea name="description" id="editor"
                         class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1"
                         rows="10">{{ old('description', $project->description) }}</textarea>
@@ -101,7 +101,7 @@
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <x-button>{{ __('Save Project') }}</x-button>
+                <x-admin.button>{{ __('Save Project') }}</x-admin.button>
 
                 {{-- <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update
                     Project</button> --}}

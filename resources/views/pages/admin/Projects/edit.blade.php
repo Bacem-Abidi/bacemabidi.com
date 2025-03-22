@@ -82,6 +82,15 @@
                     @enderror --}}
                 </div>
 
+                {{-- Featured --}}
+                <div class="mb-4">
+                    <label for="featured" class="flex items-center">
+                        <input type="hidden" name="featured" value="0">
+                        <x-checkbox id="featured" name="featured" value="1" :checked="old('featured', $project->featured ?? false)" />
+                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Featured') }}</span>
+                    </label>
+                </div>
+
                 <!-- Description -->
                 <div class="mb-4">
                     <x-label for="is_published" value="{{ __('Description') }}" />

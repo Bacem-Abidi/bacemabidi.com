@@ -24,6 +24,8 @@
                             Date</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase">
                             Is Published</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase">
+                            Featured</th>
                         <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-200 uppercase">
                             Actions</th>
                     </tr>
@@ -34,6 +36,7 @@
                             <td class="px-6 py-4">{{ $project->title }}</td>
                             <td class="px-6 py-4">{{ $project->project_date }}</td>
                             <td class="px-6 py-4">{{ $project->is_published == 0 ? 'No' : 'yes' }}</td>
+                            <td class="px-6 py-4">{{ $project->featured == 0 ? 'No' : 'yes' }}</td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="text-teal hover:text-[#1aacac] dark:text-teal hover:dark:text-cyan transition-colors duration-150">Edit</a>

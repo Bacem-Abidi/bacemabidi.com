@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
@@ -37,6 +38,7 @@ class ProjectController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
+            'featured' => 'required|boolean',
             'description' => 'nullable|string',
             // Add other fields
         ]);
@@ -60,6 +62,7 @@ class ProjectController extends Controller
             'slug' => 'required|string|unique:projects,slug,' . $project->id,
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
+            'featured' => 'required|boolean',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string',
         ]);

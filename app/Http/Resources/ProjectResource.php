@@ -22,6 +22,7 @@ class ProjectResource extends JsonResource
             'description' => $this->description,
             'tags' => $this->tags,
             'is_published' => $this->is_published,
+            'featured' => $this->featured,
             'project_date' => $this->project_date->format('Y-m-d'),
             'links' => [
                 'self' => route('api.projects.show', $this->slug),

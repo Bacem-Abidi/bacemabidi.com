@@ -13,6 +13,7 @@ class Project extends Model
         'featured_image',
         'tags',
         'is_published',
+        'featured',
         'project_date'
     ];
 }

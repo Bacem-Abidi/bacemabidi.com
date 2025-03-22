@@ -10,7 +10,7 @@ use App\Models\Project;
 class ProjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of projects
      */
     public function index()
     {
@@ -24,11 +24,17 @@ class ProjectController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of featured projects
      */
-    public function store(Request $request)
+    public function featured()
     {
-        //
+        $projects = Project::query()
+        ->where('is_published', 1) // Only fetch published projects
+        ->where('featured', 1)
+        ->orderBy('project_date', 'desc')
+        ->paginate(10);
+
+        return response()->json($projects);
     }
 
     /**
@@ -38,21 +44,5 @@ class ProjectController extends Controller
     {
         $project->load('caseStudies', 'media'); // Load relationships
         return response()->json($project);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

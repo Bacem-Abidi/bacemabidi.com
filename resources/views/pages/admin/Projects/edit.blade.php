@@ -84,12 +84,34 @@
 
                 {{-- Featured --}}
                 <div class="mb-4">
-                    <label for="featured" class="flex items-center">
+                    <label for="featured" class="flex items-center cursor-pointer">
                         <input type="hidden" name="featured" value="0">
                         <x-admin.checkbox id="featured" name="featured" value="1" :checked="old('featured', $project->featured ?? false)" />
                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Featured') }}</span>
                     </label>
                 </div>
+
+                {{-- <div class="mb-4">
+                    <label class="block mb-2">Tags</label>
+                    <select multiple name="tags[]" id=""
+                        class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1">
+                        @foreach (\App\Models\Tags::all() as $tag)
+                            <option value="{{ $tag->id }}">
+                                {{ $tag->title }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div> --}}
+
+                <div class="mb-4  bg-transparent outline-none border-none ">
+                    <label class="block mb-2 dark:text-gray-300">Tags</label>
+                    <div class="multi-select-wrapper"
+                         data-name="tags[]"
+                         data-options="{{ \App\Models\Tags::all()->toJson() }}"
+                         data-selected="{{ isset($project) ? $project->tags->pluck('id')->toJson() : '[]' }}">
+                    </div>
+                </div>
+
 
                 <!-- Description -->
                 <div class="mb-4">
@@ -102,9 +124,10 @@
                     @enderror
                 </div>
                 <x-admin.button>{{ __('Save Project') }}</x-admin.button>
-
-                {{-- <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Update
-                    Project</button> --}}
+                <a href="{{ route('admin.projects.index') }}"
+                    class="inline-flex items-center px-4 py-2 bg-red-400 dark:bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest hover:bg-red-500 dark:hover:bg-red-400 focus:bg-red-600 dark:focus:bg-red-400 active:bg-red-700 dark:active:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 transition ease-in-out duration-150">
+                    Cancel
+                </a>
             </div>
         </form>
     </div>

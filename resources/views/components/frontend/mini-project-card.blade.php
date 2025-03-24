@@ -9,15 +9,14 @@
 
     <div class="flex flex-col gap-4 flex-grow">
         @if ($project['tags'] != null)
-            {{-- <div class="flex flex-wrap gap-2">
-                @foreach ($project['tags'] as $tech)
-                    @php $color = techColor($tech); @endphp
-                    <span
-                        class="line-clamp-2 px-3 py-1 text-xs bg-{{ $color }}/10 text-{{ $color }} rounded-full ">
-                        {{ $tech }}
+            <div class="flex flex-wrap gap-2">
+                @foreach ($project['tags'] as $tag)
+                    <span style="background-color: {{ $tag['color'] }}1A; color: {{ $tag['color'] }}"
+                        class="line-clamp-2 px-3 py-1 text-xs rounded-full ">
+                        {{ $tag['title'] }}
                     </span>
                 @endforeach
-            </div> --}}
+            </div>
         @endif
         <h4 class="line-clamp-2 text-xl font-semibold !leading-[1.25] max-sm:text-lg text-text">{{ $project['title'] }}
         </h4>

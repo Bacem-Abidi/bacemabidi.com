@@ -16,7 +16,8 @@
         rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme-admin.js'])
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/admin/app.js', 'resources/js/admin/theme-admin.js', 'resources/css/admin.css'])
 
     <!-- Styles -->
     @livewireStyles

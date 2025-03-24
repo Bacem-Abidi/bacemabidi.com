@@ -29,7 +29,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Create a new Project
      */
     public function store(Request $request)
     {
@@ -42,7 +42,8 @@ class ProjectController extends Controller
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
             'description' => 'nullable|string',
-            // Add other fields
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:tags,id'
         ]);
 
         // Handle image upload
@@ -51,7 +52,13 @@ class ProjectController extends Controller
             $validated['featured_image'] = $path;
         }
 
-        Project::create($validated);
+        $tags = $validated['tags'] ?? [];
+        unset($validated['tags']);
+        $project = Project::create($validated);
+
+        if (!empty($tags)) {
+            $project->tags()->attach($tags);
+        }
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
 
@@ -67,6 +74,8 @@ class ProjectController extends Controller
             'featured' => 'required|boolean',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:tags,id'
         ]);
 
         // Handle image update
@@ -79,12 +88,19 @@ class ProjectController extends Controller
             $validated['featured_image'] = $path;
         }
 
+         // Sync tags
+        if (isset($validated['tags'])) {
+            $project->tags()->sync($validated['tags']);
+        } else {
+            $project->tags()->detach();
+        }
+
         $project->update($validated);
         return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a Project
      */
     public function destroy(Project $project)
     {

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique(); // For SEO-friendly URLs
             $table->text('description')->nullable();
             $table->string('featured_image')->nullable(); // Path to image
-            $table->json('tags')->nullable(); // Example: ["web", "design"]
+            // $table->json('tags')->nullable(); // Example: ["web", "design"]
             $table->boolean('is_published')->default(false);
             $table->date('project_date')->nullable();
             $table->timestamps();

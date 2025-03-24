@@ -41,6 +41,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/create', [TagController::class, 'create'])->name('admin.tags.create');
         Route::post('/', [TagController::class, 'store'])->name('admin.tags.store');
         Route::delete('/{tag}', [TagController::class, 'destroy'])->name('admin.tags.destroy');
+        Route::get('/{tag}/edit', [TagController::class, 'edit'])->name('admin.tags.edit');
+        Route::put('/{tag}', [TagController::class, 'update'])->name('admin.tags.update');
     });
 
 });

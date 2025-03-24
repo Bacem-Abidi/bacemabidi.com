@@ -24,6 +24,14 @@
                 </x-admin.nav-link>
             </li>
 
+            <li>
+                <x-admin.nav-link href="{{ route('admin.tags.index') }}" class="" :icon="'tags'">
+                    <span class="ml-2 text-sm tracking-wide truncate">Tags</span>
+                    {{-- <span
+                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span> --}}
+                </x-admin.nav-link>
+            </li>
+
             <li class="px-5">
                 <div class="flex flex-row items-center h-8">
                     <div class="text-sm font-light tracking-wide text-gray-500 dark:text-gray-300">Settings</div>

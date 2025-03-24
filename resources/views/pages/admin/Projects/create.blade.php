@@ -83,6 +83,27 @@
                     </label>
                 </div>
 
+                {{-- <div class="mb-4">
+                    <label class="block mb-2">Tags</label>
+                    <select multiple name="tags[]" id=""
+                        class="border-gray-300 dark:border-gray-700 dark:bg-[#2D334E] dark:text-gray-300 focus:border-teal dark:focus:border-teal focus:ring-teal dark:focus:ring-teal rounded-md shadow-sm font-robotoMono w-full block mt-1">
+                        @foreach (\App\Models\Tags::all() as $tag)
+                            <option value="{{ $tag->id }}">
+                                {{ $tag->title }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div> --}}
+
+                <div class="mb-4">
+                    <label class="block mb-2 dark:text-gray-300">Tags</label>
+                    <div class="multi-select-wrapper"
+                         data-name="tags[]"
+                         data-options="{{ \App\Models\Tags::all()->toJson() }}"
+                         data-selected="{{ isset($project) ? $project->tags->pluck('id')->toJson() : '[]' }}">
+                    </div>
+                </div>
+
                 <!-- Description -->
                 <div class="mb-4">
                     <x-admin.label for="is_published" value="{{ __('Description') }}" />

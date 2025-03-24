@@ -14,12 +14,32 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::query()
+        $projects = Project::with('tags')
         ->where('is_published', 1) // Only fetch published projects
-        // ->with(['tags', 'desc'])
         ->orderBy('project_date', 'desc')
         ->paginate(10);
 
+        $projects->getCollection()->transform(function ($project) {
+            return [
+                'id' => $project->id,
+                'title' => $project->title,
+                'slug' => $project->slug,
+                'description' => $project->description,
+                'featured_image' => $project->featured_image,
+                'tags' => $project->tags->map(function ($tag) {
+                    return [
+                        'title' => $tag->title,
+                        'color' => $tag->color
+                    ];
+                }),
+                'is_published' => $project->is_published,
+                'project_date' => $project->project_date,
+                'created_at' => $project->created_at,
+                'updated_at' => $project->updated_at,
+                'featured' => $project->featured,
+                'link' => route('projects.show', $project->id)
+            ];
+        });
         return response()->json($projects);
     }
 
@@ -28,15 +48,38 @@ class ProjectController extends Controller
      */
     public function featured()
     {
-        $projects = Project::query()
+        $projects = Project::with('tags')
         ->where('is_published', 1) // Only fetch published projects
         ->where('featured', 1)
         ->orderBy('project_date', 'desc')
         ->paginate(10);
+        // $projects->getCollection()->transform(function ($project) {
+        //     $project->link = route('projects.show', $project->id); // Add link field
+        //     return $project;
+        // });
+
         $projects->getCollection()->transform(function ($project) {
-            $project->link = route('projects.show', $project->id); // Add link field
-            return $project;
+            return [
+                'id' => $project->id,
+                'title' => $project->title,
+                'slug' => $project->slug,
+                'description' => $project->description,
+                'featured_image' => $project->featured_image,
+                'tags' => $project->tags->map(function ($tag) {
+                    return [
+                        'title' => $tag->title,
+                        'color' => $tag->color
+                    ];
+                }),
+                'is_published' => $project->is_published,
+                'project_date' => $project->project_date,
+                'created_at' => $project->created_at,
+                'updated_at' => $project->updated_at,
+                'featured' => $project->featured,
+                'link' => route('projects.show', $project->id)
+            ];
         });
+
         return response()->json($projects);
     }
 

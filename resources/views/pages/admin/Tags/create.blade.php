@@ -4,24 +4,25 @@
             {{ __('Tags-Create') }}
         </h2>
     </x-slot>
-    <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6 ">
         <h1 class="text-2xl font-bold mb-6">Create New Tag</h1>
 
         <form action="{{ route('admin.tags.store') }}" method="POST">
             @csrf
 
-            <div class="bg-white rounded-lg shadow p-6 dark:bg-[#1E2234]">
-                <div class="mb-4">
-                    <x-admin.label for="title" value="{{ __('Title') }}" />
-                    <x-admin.input class="mt-1"  type="text" name="title" required />
-                </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 space-y-8">
 
-                <div class="mb-4">
-                    <x-admin.label for="color" value="{{ __('Color') }}" />
-                    <x-admin.input class="mt-1"  type="color" name="color" required />
-                </div>
+                <x-admin.form.group label="Title" required>
+                    <x-admin.form.input type="text" name="title" required />
+                </x-admin.form.group>
 
-                <x-admin.button>{{ __('Create Tag') }}</x-admin.button>
+                <x-admin.form.group label="Color" required>
+                    <x-admin.form.color-picker name="color" label="Select Color" :value="'#1fc5c5'" required />
+                </x-admin.form.group>
+
+                <div class="flex justify-end gap-4 pt-8">
+                    <x-admin.form.btn-submit>{{ __('Create Tag') }}</x-admin.form.btn-submit>
+                </div>
 
             </div>
         </form>

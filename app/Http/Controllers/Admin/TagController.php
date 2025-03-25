@@ -31,7 +31,17 @@ class TagController extends Controller
             'color' => 'required|string|size:7|starts_with:#',
         ]);
 
-        $validated['slug'] = \Str::slug($validated['title']);
+        // $validated['slug'] = \Str::slug($validated['title']);
+
+        $slug = \Str::slug($validated['title']);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Tags::where('slug', $slug)->exists()) {
+            $slug = "{$originalSlug}-" . $count++;
+        }
+
+        $validated['slug'] = $slug;
 
         Tags::create($validated);
 
@@ -46,7 +56,17 @@ class TagController extends Controller
             'color' => 'required|string|size:7|starts_with:#',
         ]);
 
-        $validated['slug'] = \Str::slug($validated['title']);
+        // $validated['slug'] = \Str::slug($validated['title']);
+
+        $slug = \Str::slug($validated['title']);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Tags::where('slug', $slug)->exists()) {
+            $slug = "{$originalSlug}-" . $count++;
+        }
+
+        $validated['slug'] = $slug;
 
         $tag->update($validated);
 

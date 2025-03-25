@@ -20,15 +20,15 @@
             @csrf
 
             <div class="block">
-                <x-admin.label for="email" value="{{ __('Email') }}" />
-                <x-admin.input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    required autofocus autocomplete="username" />
+                <x-admin.form.label for="email" value="{{ __('Email') }}" />
+                <x-admin.form.input id="email" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-admin.button>
+                <x-admin.form.btn-submit>
                     {{ __('Email Password Reset Link') }}
-                </x-admin.button>
+                </x-admin.form.btn-submit>
             </div>
         </form>
     </x-admin.auth.authentication-card>

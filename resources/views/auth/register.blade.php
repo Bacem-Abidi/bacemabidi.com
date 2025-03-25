@@ -10,32 +10,32 @@
             @csrf
 
             <div>
-                <x-admin.label for="name" value="{{ __('Name') }}" />
-                <x-admin.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                <x-admin.form.label for="name" value="{{ __('Name') }}" />
+                <x-admin.form.input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                     required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <x-admin.label for="email" value="{{ __('Email') }}" />
-                <x-admin.input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    required autocomplete="username" />
+                <x-admin.form.label for="email" value="{{ __('Email') }}" />
+                <x-admin.form.input id="email" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" required autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-admin.label for="password" value="{{ __('Password') }}" />
-                <x-admin.input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-admin.form.label for="password" value="{{ __('Password') }}" />
+                <x-admin.form.input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <x-admin.label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-admin.input id="password_confirmation" class="block mt-1 w-full" type="password"
+                <x-admin.form.label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-admin.form.input id="password_confirmation" class="block mt-1 w-full" type="password"
                     name="password_confirmation" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
-                    <x-admin.label for="terms">
+                    <x-admin.form.label for="terms">
                         <div class="flex items-center">
                             <x-admin.checkbox name="terms" id="terms" required />
 
@@ -56,7 +56,7 @@
                                 ]) !!}
                             </div>
                         </div>
-                    </x-admin.label>
+                    </x-admin.form.label>
                 </div>
             @endif
 
@@ -66,9 +66,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-admin.button class="ms-4">
+                <x-admin.form.btn-submit class="ms-4">
                     {{ __('Register') }}
-                </x-admin.button>
+                </x-admin.form.btn-submit>
             </div>
         </form>
     </x-admin.auth.authentication-card>

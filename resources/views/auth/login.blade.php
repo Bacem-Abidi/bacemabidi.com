@@ -16,14 +16,14 @@
             @csrf
 
             <div>
-                <x-admin.label for="email" value="{{ __('Email') }}" />
-                <x-admin.input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    required autofocus autocomplete="username" />
+                <x-admin.form.label for="email" value="{{ __('Email') }}" class="mb-1" />
+                <x-admin.form.input id="email" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-admin.label for="password" value="{{ __('Password') }}" />
-                <x-admin.input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-admin.form.label for="password" value="{{ __('Password') }}" class="mb-1" />
+                <x-admin.form.input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="current-password" />
             </div>
 
@@ -42,10 +42,13 @@
                     </a>
                 @endif
 
-                <x-admin.button class="ms-4">
+                {{-- <x-admin.form.btn-submit class="ms-4">
                     {{ __('Log in') }}
-                </x-admin.button>
+                </x-admin.form.btn-submit> --}}
+                <x-admin.form.btn-submit class="ms-4">
+                    {{ __('Log in') }}
+                </x-admin.form.btn-submit>
             </div>
         </form>
-        </x-authentication-card>
+    </x-admin.auth.authentication-card>
 </x-guest-layout>

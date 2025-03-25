@@ -19,9 +19,9 @@
                 @csrf
 
                 <div>
-                    <x-admin.button type="submit">
+                    <x-admin.form.btn-submit type="submit">
                         {{ __('Resend Verification Email') }}
-                    </x-admin.button>
+                    </x-admin.form.btn-submit>
                 </div>
             </form>
 

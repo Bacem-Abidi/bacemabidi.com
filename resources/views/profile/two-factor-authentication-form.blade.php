@@ -50,13 +50,13 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-admin.label for="code" value="{{ __('Code') }}" />
+                        <x-admin.form.label for="code" value="{{ __('Code') }}" />
 
-                        <x-admin.input id="code" type="text" name="code" class="block mt-1 w-1/2"
+                        <x-admin.form.input id="code" type="text" name="code" class="block mt-1 w-1/2"
                             inputmode="numeric" autofocus autocomplete="one-time-code" wire:model="code"
                             wire:keydown.enter="confirmTwoFactorAuthentication" />
 
-                        <x-admin.input-error for="code" class="mt-2" />
+                        <x-admin.form.input-error for="code" class="mt-2" />
                     </div>
                 @endif
             @endif
@@ -80,9 +80,9 @@
         <div class="mt-5">
             @if (!$this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
-                    <x-admin.button type="button" wire:loading.attr="disabled">
+                    <x-admin.form.btn-submit type="button" wire:loading.attr="disabled">
                         {{ __('Enable') }}
-                    </x-admin.button>
+                    </x-admin.form.btn-submit>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
@@ -93,9 +93,9 @@
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-admin.button type="button" class="me-3" wire:loading.attr="disabled">
+                        <x-admin.form.btn-submit type="button" class="me-3" wire:loading.attr="disabled">
                             {{ __('Confirm') }}
-                        </x-admin.button>
+                        </x-admin.form.btn-submit>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">

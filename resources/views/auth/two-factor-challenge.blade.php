@@ -19,14 +19,14 @@
                 @csrf
 
                 <div class="mt-4" x-show="! recovery">
-                    <x-admin.label for="code" value="{{ __('Code') }}" />
-                    <x-admin.input id="code" class="block mt-1 w-full" type="text" inputmode="numeric"
+                    <x-admin.form.label for="code" value="{{ __('Code') }}" />
+                    <x-admin.form.input id="code" class="block mt-1 w-full" type="text" inputmode="numeric"
                         name="code" autofocus x-ref="code" autocomplete="one-time-code" />
                 </div>
 
                 <div class="mt-4" x-cloak x-show="recovery">
-                    <x-admin.label for="recovery_code" value="{{ __('Recovery Code') }}" />
-                    <x-admin.input id="recovery_code" class="block mt-1 w-full" type="text" name="recovery_code"
+                    <x-admin.form.label for="recovery_code" value="{{ __('Recovery Code') }}" />
+                    <x-admin.form.input id="recovery_code" class="block mt-1 w-full" type="text" name="recovery_code"
                         x-ref="recovery_code" autocomplete="one-time-code" />
                 </div>
 
@@ -51,9 +51,9 @@
                         {{ __('Use an authentication code') }}
                     </button>
 
-                    <x-admin.button class="ms-4">
+                    <x-admin.form.btn-submit class="ms-4">
                         {{ __('Log in') }}
-                    </x-admin.button>
+                    </x-admin.form.btn-submit>
                 </div>
             </form>
         </div>

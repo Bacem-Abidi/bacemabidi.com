@@ -57,9 +57,9 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-admin.button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <x-admin.form.btn-submit wire:click="confirmLogout" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
-            </x-admin.button>
+            </x-admin.form.btn-submit>
 
             <x-admin.action-message class="ms-3" on="loggedOut">
                 {{ __('Done.') }}
@@ -77,11 +77,11 @@
 
                 <div class="mt-4" x-data="{}"
                     x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-admin.input type="password" class="mt-1 block w-3/4" autocomplete="current-password"
+                    <x-admin.form.input type="password" class="mt-1 block w-3/4" autocomplete="current-password"
                         placeholder="{{ __('Password') }}" x-ref="password" wire:model="password"
                         wire:keydown.enter="logoutOtherBrowserSessions" />
 
-                    <x-admin.input-error for="password" class="mt-2" />
+                    <x-admin.form.input-error for="password" class="mt-2" />
                 </div>
             </x-slot>
 
@@ -90,9 +90,10 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-admin.button class="ms-3" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
+                <x-admin.form.btn-submit class="ms-3" wire:click="logoutOtherBrowserSessions"
+                    wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
-                </x-admin.button>
+                </x-admin.form.btn-submit>
             </x-slot>
         </x-dialog-modal>
     </x-slot>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 
 class ProjectController extends Controller
@@ -15,6 +16,11 @@ class ProjectController extends Controller
     {
         $projects = Project::latest()->paginate(10);
         return view('pages.admin.projects.index', compact('projects'));
+    }
+
+    public function show(Project $project)
+    {
+        return view('pages.admin.projects.project', compact('project'));
     }
 
     public function create()
@@ -36,7 +42,6 @@ class ProjectController extends Controller
        // Add validation
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|unique:projects,slug',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
@@ -45,6 +50,19 @@ class ProjectController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
+
+        // $validated['slug'] = \Str::slug($validated['title']);
+
+        $slug = \Str::slug($validated['title']);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Project::where('slug', $slug)->exists()) {
+            $slug = "{$originalSlug}-" . $count++;
+        }
+
+        $validated['slug'] = $slug;
+
 
         // Handle image upload
         if ($request->hasFile('featured_image')) {
@@ -59,7 +77,9 @@ class ProjectController extends Controller
         if (!empty($tags)) {
             $project->tags()->attach($tags);
         }
-        return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
+        return view('pages.admin.projects.project', compact('project'));
+
+        // return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
 
 
@@ -68,7 +88,6 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|unique:projects,slug,' . $project->id,
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
@@ -77,6 +96,19 @@ class ProjectController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
+
+        // $validated['slug'] = \Str::slug($validated['title']);
+
+        $slug = \Str::slug($validated['title']);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Project::where('slug', $slug)->exists()) {
+            $slug = "{$originalSlug}-" . $count++;
+        }
+
+        $validated['slug'] = $slug;
+
 
         // Handle image update
         if ($request->hasFile('featured_image')) {
@@ -96,7 +128,9 @@ class ProjectController extends Controller
         }
 
         $project->update($validated);
-        return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!!');
+        return view('pages.admin.projects.project', compact('project'));
+
+        // return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!!');
     }
 
     /**

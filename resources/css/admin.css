@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --cui-sidebar-occupy-start: 16rem;
 }
@@ -48,4 +52,14 @@
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+.grid-cols-\[minmax\(120px\,auto\)_1fr\] {
+    grid-template-columns: minmax(120px, auto) 1fr;
+}
+
+@layer utilities {
+    .whitespace-nowrap {
+        white-space: nowrap;
+    }
 }

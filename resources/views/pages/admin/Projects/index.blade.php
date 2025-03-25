@@ -14,9 +14,9 @@
             </a>
         </div>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden dark:bg-[#1E2234]">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-400">
-                <thead class="bg-gray-50 dark:bg-[#2D334E]">
+                <thead class="bg-gray-50 dark:bg-gray-700">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase">
                             Title</th>
@@ -33,7 +33,9 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-400">
                     @foreach ($projects as $project)
                         <tr>
-                            <td class="px-6 py-4">{{ $project->title }}</td>
+                            <td class="px-6 py-4"><a
+                                    href="{{ route('admin.projects.show', $project) }}" class="hover:underline">{{ $project->title }}</a>
+                            </td>
                             <td class="px-6 py-4">{{ $project->project_date }}</td>
                             <td class="px-6 py-4">{{ $project->is_published == 0 ? 'No' : 'yes' }}</td>
                             <td class="px-6 py-4">{{ $project->featured == 0 ? 'No' : 'yes' }}</td>

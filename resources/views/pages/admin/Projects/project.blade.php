@@ -1,4 +1,4 @@
-<x-admin.project-layout :project="$project">
+<x-admin.project-layout :project="$project" :previousProject="$previousProject" :nextProject="$nextProject">
     <div class="px-6 py-8 space-y-8">
         <!-- Project Header -->
         <div class="border-b border-gray-200 dark:border-gray-700 pb-4">

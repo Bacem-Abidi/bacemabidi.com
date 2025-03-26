@@ -1,4 +1,4 @@
-<x-admin.project-layout :project="$project">
+<x-admin.project-layout :project="$project" :previousProject="''" :nextProject="''">
     <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data"
         class="px-6 py-8">
         @csrf

@@ -20,7 +20,20 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        return view('pages.admin.projects.project', compact('project'));
+        $previousProject = Project::where('id', '<', $project->id)
+        ->orderBy('id', 'desc')
+        ->first();
+
+        $nextProject = Project::where('id', '>', $project->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('pages.admin.projects.project', [
+            'project' => $project,
+            'previousProject' => $previousProject,
+            'nextProject' => $nextProject,
+        ]);
+        // return view('pages.admin.projects.project', compact('previousProject'));
     }
 
     public function create()

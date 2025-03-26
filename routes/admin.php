@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ProjectCaseStudyController;
 use App\Http\Controllers\Admin\TagController;
 use App\Livewire\Admin\Dashboard;
 
@@ -29,11 +30,18 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::prefix('/projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('admin.projects.index');
         Route::get('/create', [ProjectController::class, 'create'])->name('admin.projects.create');
-        Route::get('/{project}', [ProjectController::class, 'show'])->name('admin.projects.show');
         Route::post('/', [ProjectController::class, 'store'])->name('admin.projects.store');
-        Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
-        Route::put('/{project}', [ProjectController::class, 'update'])->name('admin.projects.update');
-        Route::delete('/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+
+        Route::prefix('/{project}')->group(function () {
+            Route::get('/', [ProjectController::class, 'show'])->name('admin.projects.show');
+            Route::put('/', [ProjectController::class, 'update'])->name('admin.projects.update');
+            Route::get('/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
+            Route::delete('/', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+
+            Route::prefix('/case-study')->group(function () {
+                Route::get('/', [ProjectCaseStudyController::class, 'index'])->name('admin.projects.case-study');
+            });
+        });
     });
 
     // Tags routes
@@ -41,9 +49,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/', [TagController::class, 'index'])->name('admin.tags.index');
         Route::get('/create', [TagController::class, 'create'])->name('admin.tags.create');
         Route::post('/', [TagController::class, 'store'])->name('admin.tags.store');
-        Route::delete('/{tag}', [TagController::class, 'destroy'])->name('admin.tags.destroy');
-        Route::get('/{tag}/edit', [TagController::class, 'edit'])->name('admin.tags.edit');
-        Route::put('/{tag}', [TagController::class, 'update'])->name('admin.tags.update');
+
+        Route::prefix('/{tag}')->group(function () {
+            Route::get('/edit', [TagController::class, 'edit'])->name('admin.tags.edit');
+            Route::put('/', [TagController::class, 'update'])->name('admin.tags.update');
+            Route::delete('/', [TagController::class, 'destroy'])->name('admin.tags.destroy');
+        });
     });
 
 });

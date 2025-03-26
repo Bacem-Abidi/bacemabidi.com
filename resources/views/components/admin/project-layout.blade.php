@@ -16,8 +16,9 @@
                     <x-admin.tab-link href="{{ route('admin.projects.edit', $project) }}" :active="request()->routeIs('admin.projects.edit')">
                         Settings
                     </x-admin.tab-link>
-                    <x-admin.tab-link href="#" onclick="return false;" class="opacity-50 cursor-not-allowed">
-                        Case Studies (Coming Soon)
+                    <x-admin.tab-link
+                        href="{{ route('admin.projects.case-study', $project) }}" :active="request()->routeIs('admin.projects.case-study')">
+                        Case Studies
                     </x-admin.tab-link>
                 </nav>
                 <div class="flex items-center">

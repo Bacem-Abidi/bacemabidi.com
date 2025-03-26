@@ -90,7 +90,10 @@ class ProjectController extends Controller
         if (!empty($tags)) {
             $project->tags()->attach($tags);
         }
-        return view('pages.admin.projects.project', compact('project'));
+        // return view('pages.admin.projects.project', compact('project'));
+
+        return redirect()->route('admin.projects.show', $project)->with('success', 'Project Created successfully!!');
+
 
         // return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
@@ -141,9 +144,9 @@ class ProjectController extends Controller
         }
 
         $project->update($validated);
-        return view('pages.admin.projects.project', compact('project'));
+        // return view('pages.admin.projects.project', compact('project'));
 
-        // return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!!');
+        return redirect()->route('admin.projects.show', $project)->with('success', 'Project updated successfully!!');
     }
 
     /**

@@ -37,9 +37,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
             Route::put('/', [ProjectController::class, 'update'])->name('admin.projects.update');
             Route::get('/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
             Route::delete('/', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
-
+            
+            Route::post('/upload-image', [ProjectCaseStudyController::class, 'uploadImage'])->name('admin.projects.upload-image');
             Route::prefix('/case-study')->group(function () {
                 Route::get('/', [ProjectCaseStudyController::class, 'index'])->name('admin.projects.case-study');
+                Route::post('/save', [ProjectCaseStudyController::class, 'save'])->name('admin.projects.case-study.save');
             });
         });
     });

@@ -88,7 +88,6 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $project->load('caseStudies', 'media'); // Load relationships
         return response()->json($project);
     }
 }

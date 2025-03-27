@@ -11,7 +11,22 @@ class ProjectCaseStudyController extends Controller
 {
     public function index(Project $project)
     {
-        return view('pages.admin.projects.case-study', compact('project'));
+        // return view('pages.admin.projects.case-study', compact('project'));
+        $filePath = "projects/{$project->id}/case-study.md";
+
+        $initialContent = Storage::disk('public')->exists($filePath)
+            ? Storage::disk('public')->get($filePath)
+            : '# Start writing your case study...';  // Default content
+
+        return view('pages.admin.projects.case-study', [
+            'project' => $project,
+            'initialContent' => $initialContent,
+        ]);
+        // return response()->json([
+        //     'project' => $project,
+        //     'initialContent' => $initialContent,
+        // ]);
+
     }
 
     public function save(Project $project)

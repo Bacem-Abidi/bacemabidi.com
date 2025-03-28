@@ -11,8 +11,8 @@
 }
 
 @font-face {
-    font-family: 'MyCustomFont';
-    src: url('fonts/JetBrainsMono-Regular.ttf');
+    font-family: "MyCustomFont";
+    src: url("fonts/JetBrainsMono-Regular.ttf");
 }
 
 .animate-marquee {
@@ -22,16 +22,21 @@
 @keyframes marquee {
     0% {
         transform: translate(0);
-      }
-      100% {
+    }
+    100% {
         transform: translate(calc(-100% - var(--gap)));
-      }
+    }
 }
 
 /* Home Page Hologram Effect */
 @keyframes pulse-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
 }
 
 .animate-pulse-glow {
@@ -40,16 +45,20 @@
 
 /* Holographic pattern overlay */
 .holographic-pattern {
-    background-image:
-        linear-gradient(45deg, transparent 65%, #00ffff15 95%),
+    background-image: linear-gradient(45deg, transparent 65%, #00ffff15 95%),
         linear-gradient(-45deg, transparent 65%, #ff660015 95%);
     background-size: 20px 20px;
 }
 
 /* Terminal cursor blink */
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .animate-blink {
@@ -57,9 +66,7 @@
 }
 
 .glow-overlay {
-    box-shadow:
-        0 0 60px 20px #00ffff10,
-        0 0 100px 40px #ff660010;
+    box-shadow: 0 0 60px 20px #00ffff10, 0 0 100px 40px #ff660010;
     opacity: 0.3;
     filter: blur(30px);
     transition: opacity 0.3s;
@@ -83,3 +90,37 @@
     transition: opacity 0.3s ease;
 }
 
+/* Custom prose styles */
+.prose {
+    h1 {
+        @apply text-3xl font-bold mb-6 mt-12;
+    }
+    h2 {
+        @apply text-2xl font-bold mb-5 mt-10;
+    }
+    h3 {
+        @apply text-xl font-semibold mb-4 mt-8;
+    }
+    p {
+        @apply mb-6 leading-relaxed;
+    }
+    ul,
+    ol {
+        @apply mb-6 pl-6;
+    }
+    li {
+        @apply mb-2;
+    }
+    code {
+        @apply bg-gray-700 px-2 py-1 rounded;
+    }
+    pre {
+        @apply bg-gray-700 p-4 rounded-lg mb-6 overflow-x-auto;
+    }
+    blockquote {
+        @apply border-l-4 border-gray-600 pl-4 italic text-gray-300 mb-6;
+    }
+    a {
+        @apply text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 underline;
+    }
+}

@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Home')
-
-@section('content')
+<x-app-layout :title="'Home'">
     <section class="h-screen container flex items-center justify-between mx-auto max-w-screen-xl px-4">
         <div class="text-left relative z-10 max-w-2xl">
             <div class="mb-6 flex items-center gap-3 opacity-75">
@@ -41,7 +37,8 @@
         <!-- Add a 3D render/artwork placeholder on the right -->
         <div class="relative hidden lg:block w-2/5 transform-gpu group">
             <!-- Holographic Background Effect -->
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-cyan/20 to-orange/20 animate-pulse-glow"></div>
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-cyan/20 to-orange/20 animate-pulse-glow">
+            </div>
 
             <!-- Main Container -->
             <div
@@ -168,7 +165,8 @@
                         class="absolute right-0 top-0 origin-top translate-x-0 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105">
                         <div class="relative w-full overflow-hidden rounded-[11px]">
                             <picture>
-                                <source media="(max-width: 767px)" srcset="{{ asset('images/home/screen-shot-2.png') }}">
+                                <source media="(max-width: 767px)"
+                                    srcset="{{ asset('images/home/screen-shot-2.png') }}">
                                 <img loading="lazy" width="1600" height="412" decoding="async" data-nimg="1"
                                     class="grayscale group-hover:grayscale-0 relative z-10 rounded-[11px] transition-opacity duration-500 ease-in-out"
                                     style="color: transparent;" srcset="{{ asset('images/home/screen-shot.png') }}"
@@ -236,8 +234,8 @@
                 <div>
                     <div
                         class="absolute right-0 bottom-[-5] origin-bottom translate-x-0 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105">
-                        <div class="relative w-full overflow-hidden rounded-[11px]"><img loading="lazy" width="1600"
-                                height="412" decoding="async" data-nimg="1"
+                        <div class="relative w-full overflow-hidden rounded-[11px]"><img loading="lazy"
+                                width="1600" height="412" decoding="async" data-nimg="1"
                                 class="grayscale group-hover:grayscale-0 relative z-10 rounded-[11px] transition-opacity duration-500 ease-in-out"
                                 style="color: transparent;"
                                 srcset="{{ asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
@@ -249,7 +247,8 @@
                     class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
                     @include('partials.frontend.icons.icon-set', ['icon' => 'palette'])
                     <h3 class="text-lg font-semibold text-text">More Than Just Code</h3>
-                    <p class="max-w-sm text-grayBright text-sm">A developer, a 3D artist, and a creator bringing ideas to
+                    <p class="max-w-sm text-grayBright text-sm">A developer, a 3D artist, and a creator bringing ideas
+                        to
                         life in
                         every form</p>
                 </div>
@@ -280,7 +279,8 @@
                     </div>
                 </div>
 
-                <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
+                <div
+                    class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
                     <h3 class="text-lg font-semibold text-text">Tech Stack I'm familiar with</h3>
                     <p class="max-w-sm text-grayBright text-sm">Focusing on creating a seamless experience across all
                         platforms</p>
@@ -295,7 +295,8 @@
                         class="absolute inset-0 mx-auto aspect-[1/1] max-w-[600px] top-0 h-[600px] w-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] lg:left-50 md:left-20 sm:left-40">
                     </div>
                 </div>
-                <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
+                <div
+                    class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
                     @include('partials.frontend.icons.icon-set', ['icon' => 'location'])
                     <h3 class="text-lg font-semibold text-text">Location</h3>
                     <p class="max-w-lg text-grayBright text-sm">Currently Based In Tunisia</p>
@@ -349,7 +350,8 @@
                 <a href="{{ route('projects') }}"
                     class="group md:text-sm sm:text-xs text-xs flex items-center rounded-full bg-cyan/10 px-6 py-3 text-cyan transition-all hover:bg-cyan/20">
                     Read All Articles
-                    <i class="fa-solid fa-arrow-right ml-2 text-sm opacity-70 transition group-hover:translate-x-1"></i>
+                    <i
+                        class="fa-solid fa-arrow-right ml-2 text-sm opacity-70 transition group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
@@ -399,5 +401,4 @@
 
         </div>
     </section>
-
-@endsection
+</x-app-layout>

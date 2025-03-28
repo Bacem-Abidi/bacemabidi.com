@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8701caed8a1e80312e7c95142cbf97b",
+    "content-hash": "be4bcc979fa487a620621665d3b2037f",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1924,6 +1924,64 @@
                 }
             ],
             "time": "2024-12-29T14:10:59+00:00"
+        },
+        {
+            "name": "league/commonmark-ext-table",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark-ext-table.git",
+                "reference": "34d17b90b4aa0d7ca48a761da13dc8bcc53a1350"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/34d17b90b4aa0d7ca48a761da13dc8bcc53a1350",
+                "reference": "34d17b90b4aa0d7ca48a761da13dc8bcc53a1350",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": ">=0.9",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.9",
+                "phpunit/phpunit": "^4.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webuni\\CommonMark\\TableExtension\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Hasoň",
+                    "email": "martin.hason@gmail.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "The table extension for CommonMark PHP implementation",
+            "homepage": "https://github.com/webuni/commonmark-table-extension",
+            "keywords": [
+                "commonmark",
+                "markdown",
+                "table"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/commonmark-ext-table/issues",
+                "source": "https://github.com/thephpleague/commonmark-ext-table/tree/0.1.0"
+            },
+            "abandoned": "league/commonmark",
+            "time": "2015-06-24T10:08:37+00:00"
         },
         {
             "name": "league/config",

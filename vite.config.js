@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/js/admin/theme-admin.js",
                 "resources/css/app.css",
                 "resources/css/admin.css",
+                "resources/markdown/*.md",
             ],
             refresh: true,
         }),

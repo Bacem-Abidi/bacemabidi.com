@@ -13,9 +13,7 @@ Route::prefix('/')->group(function () {
 
     // Projects Routes
     Route::prefix('projects')->group(function () {
-        Route::get('/', function () {
-            return view('pages.frontend.projects');
-        })->name('projects');
+        Route::get('/', [ProjectController::class, 'index'])->name('projects');
 
         Route::get('/3d-projects', function () {
             return view('pages.frontend.projects.3d');
@@ -31,31 +29,27 @@ Route::prefix('/')->group(function () {
 
         Route::get('/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
     });
+
+
+    Route::get('/blog', function () {
+        return view('pages.frontend.blog');
+    })->name('blog');
+
+    Route::get('/about', function () {
+        return view('pages.frontend.about');
+    })->name('about');
+
+    Route::get('/contact', function () {
+        return view('pages.frontend.contact');
+    })->name('contact');
+
+    // Legal
+    Route::get('/legal/privacy-policy', function () {
+        return view('pages.legal.privacy-policy');
+    })->name('legal/privacy-policy');
+
+    Route::get('/legal/terms-of-service', function () {
+        return view('pages.legal.terms-of-service');
+    })->name('legal/terms-of-service');
 });
 
-// Projects
-
-
-
-
-
-Route::get('/blog', function () {
-    return view('pages.frontend.blog');
-})->name('blog');
-
-Route::get('/about', function () {
-    return view('pages.frontend.about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('pages.frontend.contact');
-})->name('contact');
-
-// Legal
-Route::get('/legal/privacy-policy', function () {
-    return view('pages.legal.privacy-policy');
-})->name('legal/privacy-policy');
-
-Route::get('/legal/terms-of-service', function () {
-    return view('pages.legal.terms-of-service');
-})->name('legal/terms-of-service');

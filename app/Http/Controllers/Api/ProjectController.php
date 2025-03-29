@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -37,7 +37,7 @@ class ProjectController extends Controller
                 'created_at' => $project->created_at,
                 'updated_at' => $project->updated_at,
                 'featured' => $project->featured,
-                'link' => route('projects.show', $project->id)
+                'link' => route('projects.show', $project->slug)
             ];
         });
         return response()->json($projects);
@@ -76,7 +76,7 @@ class ProjectController extends Controller
                 'created_at' => $project->created_at,
                 'updated_at' => $project->updated_at,
                 'featured' => $project->featured,
-                'link' => route('projects.show', $project->id)
+                'link' => route('projects.show', $project->slug)
             ];
         });
 
@@ -86,8 +86,20 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
+        $project = Project::with('tags')
+        ->where('slug', $slug) // Only fetch published projects
+        ->first();
+
+        $filePath = "projects/{$project->id}/case-study.md";
+
+        $path = Storage::disk('public')->exists($filePath)
+            ? $filePath
+            : '';  // Default content
+
+        $project["case"] = $path;
+
         return response()->json($project);
     }
 }

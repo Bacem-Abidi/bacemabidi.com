@@ -91,7 +91,7 @@
 }
 
 /* Custom prose styles */
-.prose {
+/* .prose {
     h1 {
         @apply text-3xl font-bold mb-6 mt-12;
     }
@@ -123,4 +123,4 @@
     a {
         @apply text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 underline;
     }
-}
+} */

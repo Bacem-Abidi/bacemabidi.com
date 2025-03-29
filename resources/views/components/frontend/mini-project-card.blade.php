@@ -1,5 +1,5 @@
 <a class="space-y-6 group flex flex-col h-full" href="{{ $project['link'] }}">
-    <div class="blur-load h-fit w-fit bg-cover bg-center rounded-lg overflow-clip image-loaded">
+    <div class="h-fit w-fit bg-cover bg-center rounded-lg overflow-clip">
         <img loading="lazy" width="1920" height="1440" decoding="async" data-nimg="1"
             class="relative z-10 rounded-[11px] transition-all duration-700 group-hover:scale-105 ease-in-out"
             style="color: transparent;"

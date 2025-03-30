@@ -1,9 +1,18 @@
 <x-app-layout :title="$project['title']">
+    <div class="fixed top-0 left-0 h-0.5 z-50 w-full">
+        <span id="progress"
+            class="pointer-events-none fixed end-0 start-0 top-0 z-30 w-0 overflow-clip rounded-full transition-[width] duration-300 ease-out"
+            style="height: 2px; width: 0%;"><span class="absolute block h-full w-screen bg-teal"
+                style="transform: translateX(-100%);"></span></span>
+    </div>
     <section class="container mx-auto max-w-screen-xl px-4 py-20">
         <div
             class="group relative flex flex-col justify-between rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset]">
             <div class="m-6">
-                <h2>{{ $project['project_date'] }}</h2>
+
+                <h2><i
+                        class="fa-solid fa-calendar-days mr-3"></i>{{ \Carbon\Carbon::parse($project['project_date'])->format('j. F Y') }}
+                </h2>
                 <h1
                     class="font-heading mt-4 text-[clamp(1.8rem,5vw,2.5rem)] font-bold leading-[1.25] sm:mt-6 md:leading-[1.1]">
                     {{ $project['title'] }}</h1>
@@ -64,7 +73,7 @@
                                         $slug = Str::slug($heading);
                                     @endphp
                                     <li class="text-sm transition-colors hover:text-white"
-                                        style="margin-left: {{ max(0, $level - 2) * 0.75 }}rem">
+                                        style="margin-left: {{ max(0, $level - 2) * 0.75 }}rem;">
                                         <a href="#{{ $slug }}" class="block py-1 truncate"
                                             data-level="{{ $level }}">
                                             {{ $heading }}
@@ -88,6 +97,113 @@
 
         </div>
     </section>
+    <script>
+        // Section Highlight Logic
+        function updateActiveLinks() {
+            const headings = document.querySelectorAll(
+                'article h1, article h2, article h3, article h4, article h5, article h6');
+            const links = document.querySelectorAll('aside a');
 
+            let closest = null;
+            let closestDistance = Infinity;
 
+            headings.forEach(heading => {
+                const rect = heading.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.2 && rect.bottom > 0) {
+                    const distance = Math.abs(rect.top);
+                    if (distance < closestDistance) {
+                        closest = heading.id;
+                        closestDistance = distance;
+                    }
+                }
+            });
+
+            links.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                link.classList.toggle('text-teal-400', href === closest);
+                link.classList.toggle('text-zinc-600', href !== closest);
+            });
+        }
+
+        // Progress Bar Logic
+        const progressBar = document.getElementById('progress');
+        const articleElement = document.querySelector('article.prose');
+        let articleTop = 0;
+        let articleHeight = 0;
+        let scrollableHeight = 0;
+
+        function calculateArticleMetrics() {
+            if (articleElement) {
+                const rect = articleElement.getBoundingClientRect();
+                articleTop = rect.top + window.scrollY;
+                articleHeight = articleElement.offsetHeight;
+                scrollableHeight = articleHeight - window.innerHeight;
+            }
+        }
+
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function updateProgress() {
+            if (!articleElement) return;
+
+            const scrollY = window.scrollY;
+            let progress = 0;
+
+            if (scrollY >= articleTop) {
+                const scrolled = Math.min(scrollY - articleTop, scrollableHeight);
+                const rawProgress = Math.min(scrolled / scrollableHeight, 1);
+                progress = easeInOutCubic(rawProgress) * 100;
+            }
+
+            progressBar.style.width = `${progress}%`;
+            progressBar.querySelector('span').style.transform = `translateX(-${100 - progress}%)`;
+        }
+
+        // Initialize and recalculate on resize
+        calculateArticleMetrics();
+        window.addEventListener('resize', calculateArticleMetrics);
+
+        // Smooth scroll handler
+        document.querySelectorAll('aside a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - 75;
+                const startPosition = window.scrollY;
+                const distance = targetPosition - startPosition;
+                const duration = 800;
+                let startTime = null;
+
+                function animation(currentTime) {
+                    if (!startTime) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const easeProgress = easeInOutCubic(progress);
+
+                    window.scrollTo(0, startPosition + (distance * easeProgress));
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            });
+        });
+
+        // Scroll listener with throttling
+        let isScrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    updateProgress();
+                    updateActiveLinks();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+    </script>
 </x-app-layout>

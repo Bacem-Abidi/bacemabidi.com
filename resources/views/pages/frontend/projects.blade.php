@@ -1,5 +1,12 @@
 <x-app-layout :title="'Projects'">
-    <section class="h-screen container flex justify-center mx-auto max-w-screen-xl px-4 py-10">
+
+    <section class="container mx-auto max-w-screen-xl px-4 py-10 min-h-screen">
+        <div class="flex items-center gap-4 mb-8 justify-between mt-12">
+            <div class="flex items-center gap-4">
+                <div class="h-px w-8 bg-cyan"></div>
+                <h2 class="md:text-xl sm:text-lg font-bold text-cyan">Projects</h2>
+            </div>
+        </div>
         @if (count($projects) > 0)
             <section class="container">
 

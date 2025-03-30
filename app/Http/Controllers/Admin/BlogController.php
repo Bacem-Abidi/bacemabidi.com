@@ -25,7 +25,7 @@ class BlogController extends Controller
        // Add validation
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'blog_date' => 'required|date',
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
@@ -33,8 +33,6 @@ class BlogController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
-
-        // $validated['slug'] = \Str::slug($validated['title']);
 
         $slug = \Str::slug($validated['title']);
         $originalSlug = $slug;
@@ -48,9 +46,9 @@ class BlogController extends Controller
 
 
         // Handle image upload
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('blog', 'public');
-            $validated['featured_image'] = $path;
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('blog', 'public');
+            $validated['cover_image'] = $path;
         }
 
         $tags = $validated['tags'] ?? [];
@@ -60,12 +58,8 @@ class BlogController extends Controller
         if (!empty($tags)) {
             $blog->tags()->attach($tags);
         }
-        // return view('pages.admin.projects.project', compact('project'));
 
         return redirect()->route('admin.blog.show', $blog)->with('success', 'Blog Created successfully!!');
-
-
-        // return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
 
     public function show(Blog $blog)
@@ -83,12 +77,23 @@ class BlogController extends Controller
             'previousBlog' => $previousBlog,
             'nextBlog' => $nextBlog,
         ]);
-        // return view('pages.admin.projects.project', compact('previousProject'));
     }
 
     public function edit(Blog $blog)
     {
-        return view('pages.admin.blog.edit', compact('blog'));
+        $previousBlog = Blog::where('id', '<', $blog->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $nextBlog = Blog::where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('pages.admin.blog.edit', [
+            'blog' => $blog,
+            'previousBlog' => $previousBlog,
+            'nextBlog' => $nextBlog,
+        ]);
     }
 
     // Handle the update request
@@ -99,13 +104,11 @@ class BlogController extends Controller
             'blog_date' => 'required|date',
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
-
-        // $validated['slug'] = \Str::slug($validated['title']);
 
         $slug = \Str::slug($validated['title']);
         $originalSlug = $slug;
@@ -119,13 +122,13 @@ class BlogController extends Controller
 
 
         // Handle image update
-        if ($request->hasFile('featured_image')) {
+        if ($request->hasFile('cover_image')) {
             // Delete old image if it exists
-            if ($blog->featured_image) {
-                Storage::disk('public')->delete($blog->featured_image);
+            if ($blog->cover_image) {
+                Storage::disk('public')->delete($blog->cover_image);
             }
-            $path = $request->file('featured_image')->store('blog', 'public');
-            $validated['featured_image'] = $path;
+            $path = $request->file('cover_image')->store('blog', 'public');
+            $validated['cover_image'] = $path;
         }
 
          // Sync tags
@@ -136,16 +139,14 @@ class BlogController extends Controller
         }
 
         $blog->update($validated);
-        // return view('pages.admin.projects.project', compact('project'));
-
         return redirect()->route('admin.blog.show', $blog)->with('success', 'Blog updated successfully!!');
     }
 
     public function destroy(Blog $blog)
     {
         // Delete associated image
-        if ($blog->featured_image) {
-            Storage::disk('public')->delete($blog->featured_image);
+        if ($blog->cover_image) {
+            Storage::disk('public')->delete($blog->cover_image);
         }
 
         $blog->delete();

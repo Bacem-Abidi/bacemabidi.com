@@ -11,10 +11,11 @@ class Blog extends Model
         'title',
         'slug',
         'description',
-        'featured_image',
+        'cover_image',
         'is_published',
         'blog_date',
-        'estimated_reading_time', // Add this
+        'featured',
+        'estimated_reading_time',
     ];
 
     public function tags(): BelongsToMany

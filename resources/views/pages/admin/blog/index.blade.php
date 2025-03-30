@@ -58,8 +58,6 @@
 
         {{ $blogs->links() }} <!-- Pagination -->
     </div>
-
-    <!-- Add this before the closing </body> tag in your layout file -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const deleteForms = document.querySelectorAll('.delete-form');
@@ -67,7 +65,7 @@
             deleteForms.forEach(form => {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    if (confirm('Are you sure you want to delete this project?')) {
+                    if (confirm('Are you sure you want to delete this blog?')) {
                         form.submit();
                     }
                 });

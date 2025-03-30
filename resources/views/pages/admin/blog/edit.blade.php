@@ -1,4 +1,4 @@
-<x-admin.blog-layout :blog="$blog" :previousBlog="''" :nextBlog="''">
+<x-admin.blog-layout :blog="$blog" :previousBlog="$previousBlog" :nextBlog="$nextBlog">
     <form action="{{ route('admin.blog.update', $blog) }}" method="POST" enctype="multipart/form-data" class="px-6 py-8">
         @csrf
         @method('PUT')
@@ -24,8 +24,8 @@
                         required />
                 </x-admin.form.group>
 
-                <x-admin.form.group label="Featured Image">
-                    <x-admin.form.file-upload name="featured_image" preview :value="$blog->featured_image" />
+                <x-admin.form.group label="Cover Image">
+                    <x-admin.form.file-upload name="cover_image" preview :value="$blog->cover_image" />
                 </x-admin.form.group>
             </div>
 

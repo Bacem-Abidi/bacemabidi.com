@@ -48,17 +48,29 @@
                         </span>
                     </div>
                 </dl>
-
+                <div class="prose dark:prose-invert max-w-none">
+                    <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Description</h3>
+                    @if ($blog->description != null)
+                        <p>{{ $blog->description }}</p>
+                    @else
+                        <p>No description is available</p>
+                    @endif
+                </div>
             </x-admin.detail-card>
         </div>
 
-        <!-- Description Card -->
-        <x-admin.detail-card title="Description" class="col-span-full">
-            <div class="prose dark:prose-invert max-w-none">
-                @if ($blog->description != null)
-                    {!! Str::markdown($blog->description) !!}
-                @endif
-            </div>
+
+
+        <x-admin.detail-card title="Cover Image" class="col-span-full">
+            @if ($blog->description != null)
+                <img loading="lazy" width="3840" height="2880" decoding="async" data-nimg="1"
+                    class="object-cover object-top h-[inherit] max-h-[inherit] rounded-[inherit] aspect-[2] w-full xs:aspect-[2]"
+                    style="color: transparent;"
+                    srcset="{{ $blog->cover_image != null ? asset('storage/' . $blog->cover_image) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
+                    src="{{ $blog->cover_image != null ? asset('storage/' . $blog->cover_image) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
+            @else
+                <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">No Cover Image is available</h3>
+            @endif
         </x-admin.detail-card>
     </div>
 </x-admin.blog-layout>

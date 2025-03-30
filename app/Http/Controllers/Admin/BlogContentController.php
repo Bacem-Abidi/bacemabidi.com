@@ -15,11 +15,21 @@ class BlogContentController extends Controller
 
         $initialContent = Storage::disk('public')->exists($filePath)
             ? Storage::disk('public')->get($filePath)
-            : '# Start writing your Content...';  // Default content
+            : '# Start writing your Blog...';  // Default content
+
+        $previousBlog = Blog::where('id', '<', $blog->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $nextBlog = Blog::where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
 
         return view('pages.admin.blog.content', [
             'blog' => $blog,
             'initialContent' => $initialContent,
+            'previousBlog' => $previousBlog,
+            'nextBlog' => $nextBlog,
         ]);
 
     }

@@ -22,19 +22,18 @@
                 </nav>
                 <div class="flex items-center">
                     {{-- <x-admin.status-badge :status="$project->is_published ? 'published' : 'draft'" /> --}}
-
-                    <a href="{{ $previousBlog ? route('admin.blog.show', $previousBlog) : '#' }}"
+                    <a href="{{ $previousBlog ? route(request()->route()->getName(), $previousBlog) : '#' }}"
                         class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100  transition-colors {{ !$previousBlog ? ' cursor-not-allowed' : '' }}"
-                        aria-disabled="true">
+                        aria-disabled="{{ !$previousBlog }}">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                         <span class="sr-only">Previous Blog</span>
                     </a>
 
-                    <a href="{{ $nextBlog ? route('admin.blog.show', $nextBlog) : '#' }}"
+                    <a href="{{ $nextBlog ? route(request()->route()->getName(), $nextBlog) : '#' }}"
                         class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors {{ !$nextBlog ? ' cursor-not-allowed' : '' }}"
-                        aria-disabled="true">
+                        aria-disabled="{{ !$nextBlog }}">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>

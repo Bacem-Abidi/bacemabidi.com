@@ -40,6 +40,14 @@ class BlogContentController extends Controller
 
         $content = request('content');
 
+        // Calculate reading time
+        $cleanContent = strip_tags(preg_replace('/<!--.*?-->/', '', $content)); // Remove HTML comments
+        $cleanContent = preg_replace('/!\[.*?\]\(.*?\)/', '', $cleanContent);   // Remove images
+        $cleanContent = preg_replace('/#+\s?/', '', $cleanContent);             // Remove headers
+        $wordCount = str_word_count($cleanContent);
+        $readingTime = ceil($wordCount / 200); // 200 words per minute average
+        $blog->estimated_reading_time = $readingTime ?: 1;
+
         // 1. Get all current images from markdown
         preg_match_all('/!\[.*?\]\((.*?)\)/', $content, $matches);
         $usedImages = collect($matches[1])->map(function ($url) use ($blog) {
@@ -62,6 +70,8 @@ class BlogContentController extends Controller
             "blog/{$blog->id}/content.md",
             $content
         );
+
+        $blog->save();
 
         return response()->json(['status' => 'success']);
     }

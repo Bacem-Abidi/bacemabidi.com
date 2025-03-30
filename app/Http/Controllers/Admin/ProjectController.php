@@ -28,12 +28,11 @@ class ProjectController extends Controller
             ->orderBy('id', 'asc')
             ->first();
 
-        return view('pages.admin.projects.project', [
+        return view('pages.admin.projects.card', [
             'project' => $project,
             'previousProject' => $previousProject,
             'nextProject' => $nextProject,
         ]);
-        // return view('pages.admin.projects.project', compact('previousProject'));
     }
 
     public function create()
@@ -44,7 +43,19 @@ class ProjectController extends Controller
     // Show the edit form
     public function edit(Project $project)
     {
-        return view('pages.admin.projects.edit', compact('project'));
+        $previousProject = Project::where('id', '<', $project->id)
+        ->orderBy('id', 'desc')
+        ->first();
+
+        $nextProject = Project::where('id', '>', $project->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('pages.admin.projects.edit', [
+            'project' => $project,
+            'previousProject' => $previousProject,
+            'nextProject' => $nextProject,
+        ]);
     }
 
     /**
@@ -63,8 +74,6 @@ class ProjectController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
-
-        // $validated['slug'] = \Str::slug($validated['title']);
 
         $slug = \Str::slug($validated['title']);
         $originalSlug = $slug;
@@ -90,12 +99,8 @@ class ProjectController extends Controller
         if (!empty($tags)) {
             $project->tags()->attach($tags);
         }
-        // return view('pages.admin.projects.project', compact('project'));
 
         return redirect()->route('admin.projects.show', $project)->with('success', 'Project Created successfully!!');
-
-
-        // return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
 
 
@@ -112,8 +117,6 @@ class ProjectController extends Controller
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
         ]);
-
-        // $validated['slug'] = \Str::slug($validated['title']);
 
         $slug = \Str::slug($validated['title']);
         $originalSlug = $slug;
@@ -144,7 +147,6 @@ class ProjectController extends Controller
         }
 
         $project->update($validated);
-        // return view('pages.admin.projects.project', compact('project'));
 
         return redirect()->route('admin.projects.show', $project)->with('success', 'Project updated successfully!!');
     }

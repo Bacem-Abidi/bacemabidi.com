@@ -48,17 +48,27 @@
                         </span>
                     </div>
                 </dl>
-
+                <div class="">
+                    <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Description</h3>
+                    @if ($project->description != null)
+                        <p>{{ $project->description }}</p>
+                    @else
+                        <p>No description is available</p>
+                    @endif
+                </div>
             </x-admin.detail-card>
         </div>
-
-        <!-- Description Card -->
-        <x-admin.detail-card title="Description" class="col-span-full">
-            <div class="prose dark:prose-invert max-w-none">
-                @if ($project->description != null)
-                    {!! Str::markdown($project->description) !!}
-                @endif
-            </div>
+        <x-admin.detail-card title="Cover Image" class="col-span-full">
+            @if ($project->cover_image != null)
+                <img loading="lazy" width="3840" height="2880" decoding="async" data-nimg="1"
+                    class="object-cover object-top h-[inherit] max-h-[inherit] rounded-[inherit] aspect-[2] w-full xs:aspect-[2]"
+                    style="color: transparent;"
+                    srcset="{{ $project->cover_image != null ? asset('storage/' . $project->cover_image) : '' }}"
+                    src="{{ $project->cover_image != null ? asset('storage/' . $project->cover_image) : '' }}">
+            @else
+                <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">No Cover Image is available
+                </h3>
+            @endif
         </x-admin.detail-card>
     </div>
 </x-admin.project-layout>

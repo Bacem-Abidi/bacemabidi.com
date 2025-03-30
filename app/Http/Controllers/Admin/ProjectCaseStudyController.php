@@ -11,32 +11,31 @@ class ProjectCaseStudyController extends Controller
 {
     public function index(Project $project)
     {
-        // return view('pages.admin.projects.case-study', compact('project'));
         $filePath = "projects/{$project->id}/case-study.md";
 
         $initialContent = Storage::disk('public')->exists($filePath)
             ? Storage::disk('public')->get($filePath)
             : '# Start writing your case study...';  // Default content
 
+        $previousProject = Project::where('id', '<', $project->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $nextProject = Project::where('id', '>', $project->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
         return view('pages.admin.projects.case-study', [
             'project' => $project,
             'initialContent' => $initialContent,
+            'previousProject' => $previousProject,
+            'nextProject' => $nextProject,
         ]);
-        // return response()->json([
-        //     'project' => $project,
-        //     'initialContent' => $initialContent,
-        // ]);
-
     }
 
     public function save(Project $project)
     {
         request()->validate(['content' => 'required|string']);
-
-        // Storage::disk('public')->put(
-        //     "projects/{$project->id}/case-study.md",
-        //     request('content')
-        // );
 
         $content = request('content');
 

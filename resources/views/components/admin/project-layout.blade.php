@@ -16,26 +16,25 @@
                     <x-admin.tab-link href="{{ route('admin.projects.edit', $project) }}" :active="request()->routeIs('admin.projects.edit')">
                         Settings
                     </x-admin.tab-link>
-                    <x-admin.tab-link
-                        href="{{ route('admin.projects.case-study', $project) }}" :active="request()->routeIs('admin.projects.case-study')">
+                    <x-admin.tab-link href="{{ route('admin.projects.case-study', $project) }}" :active="request()->routeIs('admin.projects.case-study')">
                         Case Studies
                     </x-admin.tab-link>
                 </nav>
                 <div class="flex items-center">
                     {{-- <x-admin.status-badge :status="$project->is_published ? 'published' : 'draft'" /> --}}
 
-                    <a href="{{ $previousProject ? route('admin.projects.show', $previousProject) : '#' }}"
+                    <a href="{{ $previousProject ? route(request()->route()->getName(), $previousProject) : '#' }}"
                         class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100  transition-colors {{ !$previousProject ? ' cursor-not-allowed' : '' }}"
-                        aria-disabled="true">
+                        aria-disabled="{{ !$previousProject }}">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                         <span class="sr-only">Previous Project</span>
                     </a>
 
-                    <a href="{{ $nextProject ? route('admin.projects.show', $nextProject) : '#' }}"
+                    <a href="{{ $nextProject ? route(request()->route()->getName(), $nextProject) : '#' }}"
                         class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors {{ !$nextProject ? ' cursor-not-allowed' : '' }}"
-                        aria-disabled="true">
+                        aria-disabled="{{ !$nextProject }}">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>

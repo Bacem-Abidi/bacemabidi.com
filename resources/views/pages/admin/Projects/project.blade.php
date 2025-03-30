@@ -10,7 +10,7 @@
 
         <!-- Project Details Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <x-admin.project-detail-card title="Basic Information">
+            <x-admin.detail-card title="Basic Information">
                 <dl class="space-y-4">
                     <div>
                         <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</dt>
@@ -28,9 +28,9 @@
                         </dd>
                     </div>
                 </dl>
-            </x-admin.project-detail-card>
+            </x-admin.detail-card>
 
-            <x-admin.project-detail-card title="Tags">
+            <x-admin.detail-card title="Tags">
                 <dl class="space-y-4">
                     <div class="flex flex-wrap gap-2">
                         @foreach ($project->tags as $tag)
@@ -49,16 +49,16 @@
                     </div>
                 </dl>
 
-            </x-admin.project-detail-card>
+            </x-admin.detail-card>
         </div>
 
         <!-- Description Card -->
-        <x-admin.project-detail-card title="Description" class="col-span-full">
+        <x-admin.detail-card title="Description" class="col-span-full">
             <div class="prose dark:prose-invert max-w-none">
                 @if ($project->description != null)
                     {!! Str::markdown($project->description) !!}
                 @endif
             </div>
-        </x-admin.project-detail-card>
+        </x-admin.detail-card>
     </div>
 </x-admin.project-layout>

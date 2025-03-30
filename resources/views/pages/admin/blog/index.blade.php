@@ -33,17 +33,17 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-400">
                     @foreach ($blogs as $blog)
                         <tr>
-                            <td class="px-6 py-4"><a href="{{ route('admin.blogs.show', $blog) }}"
+                            <td class="px-6 py-4"><a href="{{ route('admin.blog.show', $blog) }}"
                                     class="hover:underline">{{ $blog->title }}</a>
                             </td>
                             <td class="px-6 py-4">{{ $blog->blog_date }}</td>
                             <td class="px-6 py-4">{{ $blog->is_published == 0 ? 'No' : 'yes' }}</td>
                             <td class="px-6 py-4">{{ $blog->featured == 0 ? 'No' : 'yes' }}</td>
                             <td class="px-6 py-4 text-right">
-                                <a href="{{ route('admin.blogs.edit', $blog) }}"
+                                <a href="{{ route('admin.blog.edit', $blog) }}"
                                     class="text-teal hover:text-[#1aacac] dark:text-teal hover:dark:text-cyan transition-colors duration-150">Edit</a>
                                 <form class="delete-form inline-block"
-                                    action="{{ route('admin.blogs.destroy', $blog) }}" method="POST">
+                                    action="{{ route('admin.blog.destroy', $blog) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

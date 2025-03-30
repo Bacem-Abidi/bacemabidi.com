@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlogContentController;
 use App\Http\Controllers\Admin\ProjectCaseStudyController;
 use App\Http\Controllers\Admin\TagController;
 use App\Livewire\Admin\Dashboard;
@@ -55,6 +56,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
         Route::prefix('/{blog}')->group(function () {
             Route::get('/', [BlogController::class, 'show'])->name('admin.blog.show');
+            Route::put('/', [BlogController::class, 'update'])->name('admin.blog.update');
+            Route::get('/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+            Route::delete('/', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
+
+            Route::post('/upload-image', [BlogContentController::class, 'uploadImage'])->name('admin.blog.upload-image');
+            Route::prefix('/content')->group(function () {
+                Route::get('/', [BlogContentController::class, 'index'])->name('admin.blog.content');
+                Route::post('/save', [BlogContentController::class, 'save'])->name('admin.blog.content.save');
+            });
         });
     });
 

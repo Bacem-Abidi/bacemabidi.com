@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ProjectCaseStudyController;
 use App\Http\Controllers\Admin\TagController;
 use App\Livewire\Admin\Dashboard;
@@ -37,12 +38,23 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
             Route::put('/', [ProjectController::class, 'update'])->name('admin.projects.update');
             Route::get('/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
             Route::delete('/', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
-            
+
             Route::post('/upload-image', [ProjectCaseStudyController::class, 'uploadImage'])->name('admin.projects.upload-image');
             Route::prefix('/case-study')->group(function () {
                 Route::get('/', [ProjectCaseStudyController::class, 'index'])->name('admin.projects.case-study');
                 Route::post('/save', [ProjectCaseStudyController::class, 'save'])->name('admin.projects.case-study.save');
             });
+        });
+    });
+
+    // Blog Route
+    Route::prefix('/blog')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('admin.blog.index');
+        Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/', [BlogController::class, 'store'])->name('admin.blog.store');
+
+        Route::prefix('/{blog}')->group(function () {
+            Route::get('/', [BlogController::class, 'show'])->name('admin.blog.show');
         });
     });
 

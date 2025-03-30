@@ -13,4 +13,9 @@ class Tags extends Model
     {
         return $this->belongsToMany(Project::class);
     }
+
+    public function blog(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class);
+    }
 }

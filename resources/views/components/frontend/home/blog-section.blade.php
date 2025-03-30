@@ -7,7 +7,7 @@
             </div>
 
             <div class="flex items-center ">
-                <a href="{{ route('projects') }}"
+                <a href="{{ route('blog') }}"
                     class="group md:text-sm sm:text-xs text-xs flex items-center rounded-full bg-cyan/10 px-6 py-3 text-cyan transition-all hover:bg-cyan/20">
                     Read All Articles
                     <i class="fa-solid fa-arrow-right ml-2 text-sm opacity-70 transition group-hover:translate-x-1"></i>

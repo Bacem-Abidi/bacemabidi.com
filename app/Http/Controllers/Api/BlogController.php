@@ -34,6 +34,7 @@ class BlogController extends Controller
                 }),
                 'is_published' => $blog->is_published,
                 'blog_date' => $blog->blog_date,
+                'reading_time' => $blog->estimated_reading_time,
                 'created_at' => $blog->created_at,
                 'updated_at' => $blog->updated_at,
                 'featured' => $blog->featured,
@@ -70,6 +71,7 @@ class BlogController extends Controller
                 }),
                 'is_published' => $blog->is_published,
                 'blog_date' => $blog->blog_date,
+                'reading_time' => $blog->estimated_reading_time,
                 'created_at' => $blog->created_at,
                 'updated_at' => $blog->updated_at,
                 'featured' => $blog->featured,
@@ -81,7 +83,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Returns 
+     * Returns
      */
     public function show(string $slug)
     {

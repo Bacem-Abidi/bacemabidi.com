@@ -13,10 +13,10 @@ class BlogController extends Controller
         // Make API request
         $response = Http::get($apiBaseUrl.'/blog');
 
-        $blog = $response->successful() ? $response->json()['data'] : [];
+        $blogs = $response->successful() ? $response->json()['data'] : [];
 
 
-        return view('pages.frontend.blog', compact('blog'));
+        return view('pages.frontend.blog', compact('blogs'));
     }
 
     public function show($blog)

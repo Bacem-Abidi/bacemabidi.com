@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         $apiBaseUrl = config('api.base_url');
         // Make API request
-        $response = Http::get($apiBaseUrl.'/api/v1/blog');
+        $response = Http::get($apiBaseUrl.'/blog');
 
         $blog = $response->successful() ? $response->json()['data'] : [];
 
@@ -23,7 +23,7 @@ class BlogController extends Controller
     {
         $apiBaseUrl = config('api.base_url');
         // Make API request
-        $response = Http::get($apiBaseUrl.'/api/v1/blog/'.$blog);
+        $response = Http::get($apiBaseUrl.'/blog/'.$blog);
 
         $blog = $response->successful() ? $response->json() : [];
 

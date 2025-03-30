@@ -3,10 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProjectController;
 
 
 Route::prefix('v1')->group(function () {
+    // HomePage
+    Route::get('/homepage', [HomeController::class, 'index']);
+
     // Projects
     Route::prefix('projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index']);
@@ -14,6 +18,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/{project:slug}', [ProjectController::class, 'show']); // Use slug instead of ID
     });
 
+    // Blog
     Route::prefix('blog')->group(function () {
         Route::get('/', [BlogController::class, 'index']);
         Route::get('/featured', [BlogController::class, 'featured']);

@@ -11,7 +11,7 @@ class ProjectController extends Controller
     {
         $apiBaseUrl = config('api.base_url');
         // Make API request
-        $response = Http::get($apiBaseUrl.'/api/v1/projects');
+        $response = Http::get($apiBaseUrl.'/projects');
 
         $projects = $response->successful() ? $response->json()['data'] : [];
 
@@ -38,7 +38,7 @@ class ProjectController extends Controller
     {
         $apiBaseUrl = config('api.base_url');
         // Make API request
-        $response = Http::get($apiBaseUrl.'/api/v1/projects/'.$project);
+        $response = Http::get($apiBaseUrl.'/projects/'.$project);
 
         $project = $response->successful() ? $response->json() : [];
 

@@ -17,21 +17,18 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
-
     public function index()
     {
         $apiBaseUrl = config('api.base_url');
         // Make API request
-        $response = Http::get($apiBaseUrl.'/api/v1/projects/featured');
+        $response = Http::get($apiBaseUrl.'/homepage');
 
-        // Check if the request was successful
-        if ($response->successful()) {
-            $projects = $response->json()['data']; // Extract the projects array
-        } else {
-            $projects = []; // Fallback if API fails
-        }
-
-        return view('pages.frontend.home', compact('projects'));
-        // return view('home');
+        $data = $response->successful()
+            ? $response->json()['data']
+            : [
+                'featured_projects' => [],
+                'featured_blogs' => []
+            ];
+        return view('pages.frontend.home', $data);
     }
 }

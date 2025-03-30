@@ -53,11 +53,7 @@ class ProjectController extends Controller
         ->where('featured', 1)
         ->orderBy('project_date', 'desc')
         ->paginate(10);
-        // $projects->getCollection()->transform(function ($project) {
-        //     $project->link = route('projects.show', $project->id); // Add link field
-        //     return $project;
-        // });
-
+        
         $projects->getCollection()->transform(function ($project) {
             return [
                 'id' => $project->id,

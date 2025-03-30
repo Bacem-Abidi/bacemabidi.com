@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProjectResource extends JsonResource
+class BlogResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -23,9 +23,9 @@ class ProjectResource extends JsonResource
             'tags' => $this->tags,
             'is_published' => $this->is_published,
             'featured' => $this->featured,
-            'project_date' => $this->project_date->format('Y-m-d'),
+            'blog_date' => $this->blog_date->format('Y-m-d'),
             'links' => [
-                'self' => route('api.projects.show', $this->slug),
+                'self' => route('api.blog.show', $this->slug),
             ],
         ];
     }

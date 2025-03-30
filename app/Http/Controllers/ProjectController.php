@@ -19,6 +19,21 @@ class ProjectController extends Controller
         return view('pages.frontend.projects', compact('projects'));
     }
 
+    public function blender()
+    {
+        return view('pages.frontend.projects.3d');
+    }
+
+    public function coding()
+    {
+        return view('pages.frontend.projects.coding');
+    }
+
+    public function photography()
+    {
+        return view('pages.frontend.projects.photography');
+    }
+
     public function show($project)
     {
         $apiBaseUrl = config('api.base_url');

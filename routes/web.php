@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController;
-use App\Livewire\Admin\Dashboard;
-
+use App\Http\Controllers\BlogController;
 
 /*================ PUBLIC ================*/
 Route::prefix('/')->group(function () {
@@ -14,26 +12,16 @@ Route::prefix('/')->group(function () {
     // Projects Routes
     Route::prefix('projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('projects');
-
-        Route::get('/3d-projects', function () {
-            return view('pages.frontend.projects.3d');
-        })->name('projects/3d-projects');
-
-        Route::get('/coding-projects', function () {
-            return view('pages.frontend.projects.coding');
-        })->name('projects/coding-projects');
-
-        Route::get('/photography', function () {
-            return view('pages.frontend.projects.photography');
-        })->name('projects/photography');
-
+        Route::get('/3d-projects', [ProjectController::class, 'blender'])->name('projects/3d-projects');
+        Route::get('/coding-projects', [ProjectController::class, 'coding'])->name('projects/coding-projects');
+        Route::get('/photography', [ProjectController::class, 'photography'])->name('projects/photography');
         Route::get('/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
     });
 
-
-    Route::get('/blog', function () {
-        return view('pages.frontend.blog');
-    })->name('blog');
+    Route::prefix('/blog')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('blog');
+        Route::get('/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
+    });
 
     Route::get('/about', function () {
         return view('pages.frontend.about');

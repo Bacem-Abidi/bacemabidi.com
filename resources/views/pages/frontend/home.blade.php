@@ -44,42 +44,9 @@
     </section>
 
     {{-- Projects --}}
-    <x-frontend.home.projects-section :projects="$projects" />
+    <x-frontend.home.projects-section :projects="$data['featured_projects']" />
 
     {{-- Blogs --}}
-    @php
-        // Test data
-        $blogs = [
-            [
-                'title' => 'Project 1',
-                'desc' => 'this is a test description for the featured projects',
-                'tech_stack' => ['laravel', 'node.js', 'react'],
-                'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'link' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'created_at' => 'December 23 2024',
-                'read_duration' => '5min',
-            ],
-            [
-                'title' => 'Project 2',
-                'desc' => 'this is a test description for the featured projects',
-                'tech_stack' => ['tailwind', 'flutter', 'java'],
-                'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'link' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'created_at' => 'December 24 2024',
-                'read_duration' => '4min',
-            ],
-            [
-                'title' => 'Project 3',
-                'desc' => 'this is a test description for the featured projects',
-                'tech_stack' => ['docker', 'blender', 'vite'],
-                'image' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'link' => 'images/Renders/abandonedHouse/Render-Final-Processed-01.jpg',
-                'created_at' => 'December 25 2024',
-                'read_duration' => '3min',
-            ],
-            // Add more projects
-        ];
-    @endphp
-    <x-frontend.home.blog-section :blogs="$blogs" />
+    <x-frontend.home.blog-section :blogs="$data['featured_blogs']" />
 
 </x-app-layout>

@@ -3,18 +3,22 @@
     <div class="h-fit w-fit bg-cover bg-center rounded-lg overflow-clip md:max-w-[260px] image-loaded">
         <img loading="lazy" width="1920" height="1440" decoding="async" data-nimg="1"
             class="relative z-10 rounded-[11px] transition-all duration-700 group-hover:scale-105 ease-in-out"
-            srcset="{{ asset($blog['image']) }}" src="{{ asset($blog['image']) }}">
+            srcset="{{ asset('storage/' . $blog['cover_image']) }}"
+            src="{{ asset('storage/' . $blog['cover_image']) }}">
     </div>
 
     <div class="flex w-full flex-col justify-between lg:py-2">
         <div>
-            <div class="space-x-1 text-sm text-grayBright"> <span>{{ $blog['created_at'] }}</span> <span>•</span>
-                <span>{{ $blog['read_duration'] }}
-                    read</span>
+            <div class="space-x-1 text-sm text-grayBright">
+                <span>{{ \Carbon\Carbon::parse($blog['blog_date'])->format('j. F Y') }}</span>
+                @if ($blog['reading_time'] != null)
+                    <span>•</span>
+                    <span>{{ format_reading_time($blog['reading_time']) }}</span>
+                @endif
             </div>
             <p class="mt-3 line-clamp-2 text-lg font-semibold leading-[1.4]">
                 {{ $blog['title'] }} </p>
-            <p class="mt-2 line-clamp-2 text-grayBright max-md:text-sm"> {{ $blog['desc'] }}</p>
+            <p class="mt-2 line-clamp-2 text-grayBright max-md:text-sm"> {{ $blog['description'] }}</p>
         </div>
 
         <div class="mt-4 flex justify-between gap-6 max-xs:flex-col-reverse xs:mt-6 xs:items-center"> <span

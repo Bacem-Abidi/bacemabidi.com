@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         return Project::where('featured', true)
             ->where('is_published', true)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->take(3) // Adjust number as needed
             ->get()
             ->map(function ($project) {
@@ -41,7 +41,7 @@ class HomeController extends Controller
                         'title' => $tag->title,
                         'color' => $tag->color
                     ]),
-                    'image' => $project->cover_image,
+                    'cover_image' => $project->cover_image,
                     'link' => route('projects.show', $project->slug)
                 ];
             });
@@ -66,7 +66,7 @@ class HomeController extends Controller
                         'title' => $tag->title,
                         'color' => $tag->color
                     ]),
-                    'date' => $blog->blog_date,
+                    'blog_date' => $blog->blog_date,
                     'link' => route('blog.show', $blog->slug)
                 ];
             });

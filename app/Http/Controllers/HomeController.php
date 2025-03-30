@@ -29,6 +29,6 @@ class HomeController extends Controller
                 'featured_projects' => [],
                 'featured_blogs' => []
             ];
-        return view('pages.frontend.home', $data);
+        return view('pages.frontend.home', compact('data'));
     }
 }

@@ -3,10 +3,9 @@
     <a class="space-y-3 group flex flex-col h-full" href="{{ $project['link'] }}">
         <div class="h-fit w-fit bg-cover bg-center rounded-lg overflow-clip p-2">
             <img loading="lazy" width="1920" height="1440" decoding="async" data-nimg="1"
-                class="relative z-10 rounded-[11px]"
-                style="color: transparent;"
-                srcset="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
-                src="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
+                class="relative z-10 rounded-[11px]" style="color: transparent;"
+                srcset="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
+                src="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
         </div>
         <div class="flex flex-col gap-4 flex-grow p-2">
             @if ($project['tags'] != null)

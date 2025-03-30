@@ -3,8 +3,8 @@
         <img loading="lazy" width="1920" height="1440" decoding="async" data-nimg="1"
             class="relative z-10 rounded-[11px] transition-all duration-700 group-hover:scale-105 ease-in-out"
             style="color: transparent;"
-            srcset="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
-            src="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
+            srcset="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
+            src="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
     </div>
 
     <div class="flex flex-col gap-4 flex-grow">

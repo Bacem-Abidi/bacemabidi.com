@@ -29,8 +29,8 @@
                         <x-admin.form.date-picker name="project_date" value="{{ old('project_date') }}" required />
                     </x-admin.form.group>
 
-                    <x-admin.form.group label="Featured Image">
-                        <x-admin.form.file-upload name="featured_image" preview />
+                    <x-admin.form.group label="Cover Image">
+                        <x-admin.form.file-upload name="cover_image" preview />
                     </x-admin.form.group>
                 </div>
 

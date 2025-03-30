@@ -55,7 +55,7 @@ class ProjectController extends Controller
        // Add validation
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
@@ -78,9 +78,9 @@ class ProjectController extends Controller
 
 
         // Handle image upload
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('projects', 'public');
-            $validated['featured_image'] = $path;
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('projects', 'public');
+            $validated['cover_image'] = $path;
         }
 
         $tags = $validated['tags'] ?? [];
@@ -107,7 +107,7 @@ class ProjectController extends Controller
             'project_date' => 'required|date',
             'is_published' => 'required|boolean',
             'featured' => 'required|boolean',
-            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'nullable|string',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
@@ -127,13 +127,13 @@ class ProjectController extends Controller
 
 
         // Handle image update
-        if ($request->hasFile('featured_image')) {
+        if ($request->hasFile('cover_image')) {
             // Delete old image if it exists
-            if ($project->featured_image) {
-                Storage::disk('public')->delete($project->featured_image);
+            if ($project->cover_image) {
+                Storage::disk('public')->delete($project->cover_image);
             }
-            $path = $request->file('featured_image')->store('projects', 'public');
-            $validated['featured_image'] = $path;
+            $path = $request->file('cover_image')->store('projects', 'public');
+            $validated['cover_image'] = $path;
         }
 
          // Sync tags
@@ -155,8 +155,8 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         // Delete associated image
-        if ($project->featured_image) {
-            Storage::disk('public')->delete($project->featured_image);
+        if ($project->cover_image) {
+            Storage::disk('public')->delete($project->cover_image);
         }
 
         $project->delete();

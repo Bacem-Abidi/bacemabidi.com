@@ -11,7 +11,7 @@ class Project extends Model
         'title',
         'slug',
         'description',
-        'featured_image',
+        'cover_image',
         'is_published',
         'featured',
         'project_date'

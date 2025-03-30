@@ -25,8 +25,8 @@
                         value="{{ old('project_date', $project->project_date) }}" required />
                 </x-admin.form.group>
 
-                <x-admin.form.group label="Featured Image">
-                    <x-admin.form.file-upload name="featured_image" preview :value="$project->featured_image" />
+                <x-admin.form.group label="Cover Image">
+                    <x-admin.form.file-upload name="cover_image" preview :value="$project->cover_image" />
                 </x-admin.form.group>
             </div>
 

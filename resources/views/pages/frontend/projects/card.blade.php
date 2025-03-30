@@ -33,8 +33,8 @@
                 <img loading="lazy" width="3840" height="2880" decoding="async" data-nimg="1"
                     class="object-cover object-top h-[inherit] max-h-[inherit] rounded-[inherit] aspect-[2] w-full xs:aspect-[2]"
                     style="color: transparent;"
-                    srcset="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
-                    src="{{ $project['featured_image'] != null ? asset('storage/' . $project['featured_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
+                    srcset="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
+                    src="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
             </div>
             @if ($project && Storage::disk('public')->exists("projects/{$project['id']}/case-study.md"))
                 <div class="mt-2 flex w-full gap-16 sm:mt-4 p-6">

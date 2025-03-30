@@ -25,7 +25,7 @@ class ProjectController extends Controller
                 'title' => $project->title,
                 'slug' => $project->slug,
                 'description' => $project->description,
-                'featured_image' => $project->featured_image,
+                'cover_image' => $project->cover_image,
                 'tags' => $project->tags->map(function ($tag) {
                     return [
                         'title' => $tag->title,
@@ -64,7 +64,7 @@ class ProjectController extends Controller
                 'title' => $project->title,
                 'slug' => $project->slug,
                 'description' => $project->description,
-                'featured_image' => $project->featured_image,
+                'cover_image' => $project->cover_image,
                 'tags' => $project->tags->map(function ($tag) {
                     return [
                         'title' => $tag->title,

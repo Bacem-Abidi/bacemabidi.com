@@ -45,9 +45,8 @@
                 <!-- Featured Image -->
                 <div class="mb-4">
                     <label class="block text-gray-700 dark:text-text text-sm font-bold mb-2">Featured Image</label>
-                    @if ($project->featured_image)
-                        <img src="{{ asset('storage/' . $project->featured_image) }}"
-                            class="w-32 h-32 object-cover mb-2">
+                    @if ($project->cover_image)
+                        <img src="{{ asset('storage/' . $project->cover_image) }}" class="w-32 h-32 object-cover mb-2">
                     @endif
                     <input type="file" name="featured_image" class="w-full">
                     {{-- @error('featured_image')

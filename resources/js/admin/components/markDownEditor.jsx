@@ -6,6 +6,7 @@ export default function MarkdownEditor({
     initialContent,
     saveRoute,
     uploadRoute,
+    title,
 }) {
     const [value, setValue] = useState(initialContent || "");
     const [isSaving, setIsSaving] = useState(false);
@@ -128,7 +129,7 @@ export default function MarkdownEditor({
     return (
         <div className="container mx-auto p-6">
             <div className="mb-4 flex justify-between items-center">
-                <h1 className="text-2xl font-bold">Case Study Editor</h1>
+                <h1 className="text-2xl font-bold">{title}</h1>
                 <button
                     onClick={handleSave}
                     disabled={isSaving}
@@ -165,6 +166,7 @@ if (document.getElementById("markdown-editor")) {
             initialContent={el.dataset.initialContent}
             saveRoute={el.dataset.saveRoute}
             uploadRoute={el.dataset.uploadRoute}
+            title={el.dataset.title}
         />
     );
 }

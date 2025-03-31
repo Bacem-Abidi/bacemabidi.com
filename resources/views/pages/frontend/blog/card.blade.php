@@ -1,4 +1,4 @@
-<x-app-layout :title="$project['title']">
+<x-app-layout :title="$blog['title']">
     <div class="fixed top-0 left-0 h-0.5 z-50 w-full">
         <span id="progress"
             class="pointer-events-none fixed end-0 start-0 top-0 z-30 w-0 overflow-clip rounded-full transition-[width] duration-300 ease-out"
@@ -11,16 +11,20 @@
             <div class="m-6">
 
                 <h2><i
-                        class="fa-solid fa-calendar-days mr-3"></i>{{ \Carbon\Carbon::parse($project['project_date'])->format('j. F Y') }}
+                        class="fa-solid fa-calendar-days mr-3"></i>{{ \Carbon\Carbon::parse($blog['blog_date'])->format('j. F Y') }}
+                    @if ($blog['reading_time'] != null)
+                        <span>•</span>
+                        <span>{{ format_reading_time($blog['reading_time']) }}</span>
+                    @endif
                 </h2>
                 <h1
                     class="font-heading mt-4 text-[clamp(1.8rem,5vw,2.5rem)] font-bold leading-[1.25] sm:mt-6 md:leading-[1.1]">
-                    {{ $project['title'] }}</h1>
-                <h3 class="mt-4 text-zinc-400 max-sm:text-sm">{{ $project['description'] }}</h3>
-                @if ($project['tags'])
+                    {{ $blog['title'] }}</h1>
+                <h3 class="mt-4 text-zinc-400 max-sm:text-sm">{{ $blog['description'] }}</h3>
+                @if ($blog['tags'])
                     <div class="mt-4 flex gap-4 max-sm:flex-col-reverse sm:mt-6 sm:items-center sm:justify-between">
                         <ul class="flex flex-wrap gap-2 sm:gap-4">
-                            @foreach ($project['tags'] as $tag)
+                            @foreach ($blog['tags'] as $tag)
                                 <li class="px-3 py-1 text-sm rounded-full backdrop-blur-sm"
                                     style="background-color: {{ $tag['color'] }}1A; color: {{ $tag['color'] }};">
                                     {{ $tag['title'] }}</li>
@@ -33,15 +37,15 @@
                 <img loading="lazy" width="3840" height="2880" decoding="async" data-nimg="1"
                     class="object-cover object-top h-[inherit] max-h-[inherit] rounded-[inherit] aspect-[2] w-full xs:aspect-[2]"
                     style="color: transparent;"
-                    srcset="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
-                    src="{{ $project['cover_image'] != null ? asset('storage/' . $project['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
+                    srcset="{{ $blog['cover_image'] != null ? asset('storage/' . $blog['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}"
+                    src="{{ $blog['cover_image'] != null ? asset('storage/' . $blog['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
             </div>
-            @if ($project && Storage::disk('public')->exists("projects/{$project['id']}/case-study.md"))
+            @if ($blog && Storage::disk('public')->exists("blog/{$blog['id']}/content.md"))
                 <div class="mt-2 flex w-full gap-16 sm:mt-4 p-6">
                     <article
                         class="prose prose-invert max-w-none max-sm:prose-sm prose-headings:font-display prose-headings:scroll-m-16 sm:prose-headings:scroll-m-24 prose-a:article-link prose-a:text-teal">
                         @php
-                            $content = Storage::disk('public')->get("projects/{$project['id']}/case-study.md");
+                            $content = Storage::disk('public')->get("blog/{$blog['id']}/content.md");
                         @endphp
 
                         {!! format_markdown_content($content) !!}
@@ -52,7 +56,9 @@
                             <ul
                                 class="mt-2 space-y-1.5 text-[0.9rem] text-zinc-600 scrollbar-color max-h-[480px] overflow-y-scroll">
                                 @php
-                                    $content = Storage::disk('public')->get("projects/{$project['id']}/case-study.md");
+                                    $content = Storage::disk('public')->get("blog/{$blog['id']}/content.md");
+
+                                    // Improved heading extraction that ignores code blocks
                                     preg_match_all('/^#{1,6}\s+(.+)$/m', $content, $matches, PREG_SET_ORDER);
 
                                     $headings = [];
@@ -78,10 +84,9 @@
                                     @php
                                         $slug = Str::slug($heading['text']);
                                     @endphp
-                                    <li class="text-sm transition-colors hover:text-white"
+                                    <li class="..."
                                         style="margin-left: {{ max(0, $heading['level'] - 2) * 0.75 }}rem;">
-                                        <a href="#{{ $slug }}" class="block py-1 truncate"
-                                            data-level="{{ $heading['level'] }}">
+                                        <a href="#{{ $slug }}" class="...">
                                             {{ $heading['text'] }}
                                         </a>
                                     </li>
@@ -93,10 +98,10 @@
             @else
                 <div class="text-center py-20">
                     <h1 class="text-3xl font-bold text-white mb-4">
-                        Case Study Coming Soon...
+                        Blog Coming Soon...
                     </h1>
                     <p class="text-gray-300">
-                        I'm currently working on documenting this project's details.
+                        I'm currently working on writing this Blog.
                     </p>
                 </div>
             @endif

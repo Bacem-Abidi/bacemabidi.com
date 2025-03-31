@@ -8,16 +8,6 @@
                 src="{{ $blog['cover_image'] != null ? asset('storage/' . $blog['cover_image']) : asset('images/Renders/abandonedHouse/Render-Final-Processed-01.jpg') }}">
         </div>
         <div class="flex flex-col gap-4 flex-grow p-2">
-            {{-- @if ($blog['tags'] != null)
-                <div class="flex flex-wrap gap-2">
-                    @foreach ($blog['tags'] as $tag)
-                        <span style="background-color: {{ $tag['color'] }}1A; color: {{ $tag['color'] }}"
-                            class="line-clamp-2 px-3 py-1 text-xs rounded-full ">
-                            {{ $tag['title'] }}
-                        </span>
-                    @endforeach
-                </div>
-            @endif --}}
             <div class="flex flex-wrap gap-2">
                 <span>{{ \Carbon\Carbon::parse($blog['blog_date'])->format('j. F Y') }}</span>
                 @if ($blog['reading_time'] != null)

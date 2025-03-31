@@ -18,6 +18,13 @@ class Blog extends Model
         'estimated_reading_time',
     ];
 
+    protected $appends = ['reading_time'];
+
+    public function getReadingTimeAttribute()
+    {
+        return $this->estimated_reading_time;
+    }
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tags::class);

@@ -89,15 +89,16 @@ class BlogController extends Controller
     {
         $blog = Blog::with('tags')
         ->where('slug', $slug)
-        ->first();
+        ->first()
+        ->makeHidden('estimated_reading_time');
 
-        $filePath = "blog/{$blog->id}/case-study.md";
+        $filePath = "blog/{$blog->id}/content.md";
 
         $path = Storage::disk('public')->exists($filePath)
             ? $filePath
             : '';  // Default content
 
-        $blog["case"] = $path;
+        $blog["content"] = $path;
 
         return response()->json($blog);
     }

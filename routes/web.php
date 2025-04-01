@@ -31,17 +31,19 @@ Route::prefix('/')->group(function () {
         Route::post('/', [ContactController::class, 'submit'])->name('contact.submit');
     });
 
+    // Legal Routes
+    Route::prefix('/contact')->group(function () {
+        Route::get('/privacy-policy', function () {
+            return view('pages.legal.privacy-policy');
+        })->name('legal.privacy-policy');
+
+        Route::get('/terms-of-service', function () {
+            return view('pages.legal.terms-of-service');
+        })->name('legal.terms-of-service');
+    });
+
     Route::get('/about', function () {
         return view('pages.frontend.about');
     })->name('about');
-
-    // Legal
-    Route::get('/legal/privacy-policy', function () {
-        return view('pages.legal.privacy-policy');
-    })->name('legal/privacy-policy');
-
-    Route::get('/legal/terms-of-service', function () {
-        return view('pages.legal.terms-of-service');
-    })->name('legal/terms-of-service');
 });
 

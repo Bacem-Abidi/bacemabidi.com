@@ -96,12 +96,12 @@
                     <p class="text-white">Legal</p>
                     <ul class="mt-6 space-y-4 text-xs text-zinc-300">
                         <li>
-                            <a href="{{ route('legal/privacy-policy') }}" class="transition hover:text-cyan">
+                            <a href="{{ route('legal.privacy-policy') }}" class="transition hover:text-cyan">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('legal/terms-of-service') }}" class="transition hover:text-cyan">
+                            <a href="{{ route('legal.terms-of-service') }}" class="transition hover:text-cyan">
                                 Terms of Service
                             </a>
                         </li>
@@ -113,4 +113,5 @@
                 &copy; {{ date('Y') }}. Made with ❤️ By Me. All rights reserved.
             </p>
         </div>
+    </div>
 </footer>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 
 /*================ PUBLIC ================*/
 Route::prefix('/')->group(function () {
@@ -18,18 +19,21 @@ Route::prefix('/')->group(function () {
         Route::get('/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
     });
 
+    // Blog Routes
     Route::prefix('/blog')->group(function () {
         Route::get('/', [BlogController::class, 'index'])->name('blog');
         Route::get('/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
     });
 
+    // Contact Routes
+    Route::prefix('/contact')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contact');
+        Route::post('/', [ContactController::class, 'submit'])->name('contact.submit');
+    });
+
     Route::get('/about', function () {
         return view('pages.frontend.about');
     })->name('about');
-
-    Route::get('/contact', function () {
-        return view('pages.frontend.contact');
-    })->name('contact');
 
     // Legal
     Route::get('/legal/privacy-policy', function () {

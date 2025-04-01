@@ -1,4 +1,16 @@
 <x-app-layout :title="'Contact'">
+    @if (session('success'))
+        <x-frontend.notification type="success">
+            {{ session('success') }}
+        </x-frontend.notification>
+    @endif
+
+    @if (session('error'))
+        <x-frontend.notification type="error">
+            {{ session('error') }}
+        </x-frontend.notification>
+    @endif
+
     <section class="min-h-screen py-16">
         <div
             class="container mx-auto max-w-4xl relative flex flex-col justify-between rounded-2xl bg-background [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#293040_inset]">
@@ -11,7 +23,8 @@
 
             <div class="grid md:grid-cols-2 gap-12 p-8">
                 <!-- Contact Form -->
-                <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
+                <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6" x-data="{ submitted: false }"
+                    @submit.prevent="submitted = true; $el.submit()">
                     @csrf
                     <div class="!mt-0">
                         <label for="name" class="block text-gray-300 mb-2">Name</label>
@@ -28,7 +41,28 @@
                         <x-frontend.form.textarea name="message"
                             rows="6">{{ old('message') }}</x-frontend.form.textarea>
                     </div>
-                    <x-frontend.form.btn-submit>Send Message</x-frontend.form.btn-submit>
+                    <div>
+                        <p class="text-xs text-gray-400">
+                            By submitting this, you confirm that you have read and understood the <a
+                                href="{{ route('legal.privacy-policy') }}" class="text-teal">Privacy
+                                Policy</a>.
+                        </p>
+                    </div>
+                    {{-- <x-frontend.form.btn-submit>Send Message</x-frontend.form.btn-submit> --}}
+                    <x-frontend.form.btn-submit x-bind:disabled="submitted">
+                        <span x-show="!submitted">Send Message</span>
+                        <span x-show="submitted" class="flex items-center gap-2">
+                            <svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                            Sending...
+                        </span>
+                    </x-frontend.form.btn-submit>
                 </form>
                 <!-- Contact Info -->
                 <div class="space-y-10">

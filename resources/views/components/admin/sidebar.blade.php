@@ -26,15 +26,17 @@
             <li>
                 <x-admin.nav-link href="{{ route('admin.blog.index') }}" class="" :icon="'blog'">
                     <span class="ml-2 text-sm tracking-wide truncate">Blog</span>
-                    {{-- <span
-                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span> --}}
                 </x-admin.nav-link>
             </li>
             <li>
                 <x-admin.nav-link href="{{ route('admin.tags.index') }}" class="" :icon="'tags'">
                     <span class="ml-2 text-sm tracking-wide truncate">Tags</span>
-                    {{-- <span
-                        class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">1.2k</span> --}}
+                </x-admin.nav-link>
+            </li>
+
+            <li>
+                <x-admin.nav-link href="{{ route('admin.photography.index') }}" class="" :icon="'photography'">
+                    <span class="ml-2 text-sm tracking-wide truncate">Photography</span>
                 </x-admin.nav-link>
             </li>
 

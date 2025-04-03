@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BlogContentController;
 use App\Http\Controllers\Admin\ProjectCaseStudyController;
+use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\TagController;
 use App\Livewire\Admin\Dashboard;
 
@@ -78,6 +79,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
             Route::get('/edit', [TagController::class, 'edit'])->name('admin.tags.edit');
             Route::put('/', [TagController::class, 'update'])->name('admin.tags.update');
             Route::delete('/', [TagController::class, 'destroy'])->name('admin.tags.destroy');
+        });
+    });
+
+    // Photography routes
+    Route::prefix('photography')->group(function () {
+        Route::get('/', [PhotographyController::class, 'index'])->name('admin.photography.index');
+        Route::get('/upload', [PhotographyController::class, 'upload'])->name('admin.photography.upload');
+        Route::post('/', [PhotographyController::class, 'store'])->name('admin.photography.store');
+
+        Route::prefix('/{image}')->group(function () {
+            Route::get('/edit', [PhotographyController::class, 'edit'])->name('admin.photography.edit');
+            Route::put('/', [PhotographyController::class, 'update'])->name('admin.photography.update');
+            Route::delete('/', [PhotographyController::class, 'destroy'])->name('admin.photography.destroy');
         });
     });
 

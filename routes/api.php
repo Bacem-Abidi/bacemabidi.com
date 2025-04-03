@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\PhotographyController;
 
 
 Route::prefix('v1')->group(function () {
@@ -24,4 +25,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/featured', [BlogController::class, 'featured']);
         Route::get('/{blog:slug}', [BlogController::class, 'show']); // Use slug instead of ID
     });
+
+    // Photography routes
+    Route::prefix('photography')->group(function () {
+        Route::get('/', [PhotographyController::class, 'index']);
+    });
+
 });

@@ -22,7 +22,7 @@ class ContactController extends Controller
 
         try {
             // Send email
-            Mail::to($validated["email"])->send(new ContactFormMail($validated));
+            Mail::to(config('mail.from.address'))->send(new ContactFormMail($validated));
 
             return back()->with('success', 'Your message has been sent successfully!');
 

@@ -1,7 +1,19 @@
-@props(['name' => '', 'label', 'type' => 'text', 'required' => false, 'placeholder' => '', 'value' => ''])
+@props([
+    'name' => '',
+    'label',
+    'type' => 'text',
+    'required' => false,
+    'placeholder' => '',
+    'value' => '',
+    'icon' => '',
+])
 
 <div class="relative">
-
+    @if ($icon)
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="{{ $icon }}"></i>
+        </div>
+    @endif
     <input type="{{ $type }}" id="{{ $name }}" name="{{ $name }}" placeholder="{{ $placeholder }}"
         value="{{ old($name, $value) }}" {{ $required ? 'required' : '' }} @class([
             'block w-full rounded-lg border border-gray-300 dark:border-gray-600',
@@ -14,6 +26,7 @@
             'placeholder-gray-400 dark:placeholder-gray-500',
             'shadow-sm' => !$errors->has($name),
             'border-red-500 dark:border-red-400' => $errors->has($name),
+            'pl-10' => $icon != '',
             'bg-gray-100 text-gray-500 cursor-not-allowed opacity-70 dark:bg-gray-700 dark:text-gray-400' => $attributes->has(
                 'disabled'),
         ])

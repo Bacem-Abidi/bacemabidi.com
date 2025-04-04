@@ -51,7 +51,7 @@
                 </x-admin.nav-link>
             </li>
             <li>
-                <x-admin.nav-link href="#" class="" :icon="'settings'">
+                <x-admin.nav-link href="{{ route('admin.settings') }}" class="" :icon="'settings'">
                     <span class="ml-2 text-sm tracking-wide truncate">Settings</span>
                 </x-admin.nav-link>
             </li>

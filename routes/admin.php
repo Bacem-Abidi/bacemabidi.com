@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BlogContentController;
 use App\Http\Controllers\Admin\ProjectCaseStudyController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Livewire\Admin\Dashboard;
 
 /*================ ADMIN ================*/
@@ -93,6 +94,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
             Route::put('/', [PhotographyController::class, 'update'])->name('admin.photography.update');
             Route::delete('/', [PhotographyController::class, 'destroy'])->name('admin.photography.destroy');
         });
+    });
+
+    // Setting routes
+    Route::prefix('settings')->group(function () {
+        Route::get('/', [SettingsController::class, 'render'])->name('admin.settings');
+        Route::put('/update', [SettingsController::class, 'update'])->name('admin.settings.update');
     });
 
 });

@@ -32,7 +32,7 @@ Route::prefix('/')->group(function () {
     });
 
     // Legal Routes
-    Route::prefix('/contact')->group(function () {
+    Route::prefix('/legal')->group(function () {
         Route::get('/privacy-policy', function () {
             return view('pages.legal.privacy-policy');
         })->name('legal.privacy-policy');

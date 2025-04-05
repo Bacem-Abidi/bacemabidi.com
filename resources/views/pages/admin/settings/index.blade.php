@@ -56,11 +56,11 @@
                                 {{ __('Select A New Photo') }}
                             </x-admin.secondary-button>
 
-                            @if ($profile->selfie_path)
-                                <x-admin.secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
+                            {{-- @if ($profile->selfie_path)
+                                <x-admin.secondary-button type="button" class="mt-2" click="">
                                     {{ __('Remove Photo') }}
                                 </x-admin.secondary-button>
-                            @endif
+                            @endif --}}
 
                             <x-admin.form.input-error for="selfie" class="mt-2" />
                         </div>

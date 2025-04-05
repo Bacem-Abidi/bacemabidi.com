@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -30,6 +31,9 @@ class SettingsController extends Controller
         $profile = Profile::firstOrNew();
 
         if ($request->hasFile('selfie')) {
+            if ($profile->selfie_path) {
+                Storage::disk('public')->delete($profile->selfie_path);
+            }
             $path = $request->file('selfie')->store('selfies', 'public');
             $validated['selfie_path'] = $path;
         }

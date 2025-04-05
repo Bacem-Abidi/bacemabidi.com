@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Project;
 use App\Models\Blog;
+use App\Models\Profile;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,13 @@ class HomeController extends Controller
                 'version' => config('app.version'),
                 // 'generated_at' => now()->toDateTimeString()
             ]
+        ]);
+    }
+
+    public function info()
+    {
+        return response()->json([
+            'data' => $this->getInfo()
         ]);
     }
 
@@ -71,5 +79,11 @@ class HomeController extends Controller
                 ];
             });
     }
+
+    protected function getInfo()
+    {
+        return Profile::firstOrNew();
+    }
+
 
 }

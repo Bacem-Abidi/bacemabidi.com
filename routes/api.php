@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\PhotographyController;
 Route::prefix('v1')->group(function () {
     // HomePage
     Route::get('/homepage', [HomeController::class, 'index']);
+    Route::get('/info', [HomeController::class, 'info']);
 
     // Projects
     Route::prefix('projects')->group(function () {

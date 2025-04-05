@@ -9,8 +9,9 @@
                         class="relative  w-64 h-64 rounded-2xl overflow-hidden border-2 border-gray-900 group-hover:border-teal transition-all duration-500">
                         <img loading="lazy" decoding="async" data-nimg="1"
                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                            style="color: transparent;" srcset="{{ asset('images/selfie.jpg') }}"
-                            src="{{ asset('images/selfie.jpg') }}">
+                            style="color: transparent;"
+                            srcset="{{ $globalData['selfie_path'] ? asset('storage/' . $globalData['selfie_path']) : asset('images/selfie.jpg') }}"
+                            src="{{ $globalData['selfie_path'] ? asset('storage/' . $globalData['selfie_path']) : asset('images/selfie.jpg') }}">
                         <div
                             class="absolute inset-0 bg-teal-400/10 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-300">
                         </div>
@@ -20,7 +21,7 @@
                 <div class="md:col-span-2">
                     <h1 class="text-4xl font-bold text-white mb-4">Software Engineer & 3D Artist</h1>
                     <p class="text-gray-400 text-base mb-6">
-                        Hi I'm Bacem Abidi, a Software engineer based in Tunisia. I love working
+                        {{ $globalData['bio'] ? $globalData['bio'] : "Hi I'm Bacem Abidi, a Software engineer based in Tunisia. I love working" }}
                     </p>
                     <div class="flex space-x-4 items-center">
                         @include('partials.frontend.social-links.github', ['size' => 'size-9'])
@@ -36,8 +37,7 @@
                 <h2 class="text-3xl font-bold text-white mb-8">Technical Arsenal</h2>
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Full-Stack Development -->
-                    <div
-                        class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
                         <div class="text-teal-400 mb-4">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -53,8 +53,7 @@
                     </div>
 
                     <!-- 3D & Game Dev -->
-                    <div
-                        class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
                         <div class="text-teal-400 mb-4">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,8 +69,7 @@
                     </div>
 
                     <!-- Mobile Solutions -->
-                    <div
-                        class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-teal transition-colors">
                         <div class="text-teal-400 mb-4">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

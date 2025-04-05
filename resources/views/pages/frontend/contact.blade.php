@@ -75,8 +75,8 @@
                         </div>
                         <div>
                             <h3 class="text-white font-semibold">Email Me</h3>
-                            <a href="mailto:abidi.bacem.ab.25@gmail.com"
-                                class="text-gray-400 hover:text-teal transition-colors duration-200 ease-in">abidi.bacem.ab.25@gmail.com</a>
+                            <a href="mailto:{{ $globalData['social_links']['email'] ? $globalData['social_links']['email'] : 'abidi.bacem.ab.25@gmail.com' }}"
+                                class="text-gray-400 hover:text-teal transition-colors duration-200 ease-in">{{ $globalData['social_links']['email'] ? $globalData['social_links']['email'] : 'abidi.bacem.ab.25@gmail.com' }}</a>
                         </div>
                     </div>
 

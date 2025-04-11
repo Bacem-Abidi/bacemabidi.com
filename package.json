@@ -27,6 +27,7 @@
         "@uiw/react-md-editor": "^4.0.5",
         "cobe": "^0.6.3",
         "framer-motion": "^12.4.7",
+        "imagesloaded": "^5.0.0",
         "react-globe.gl": "^2.32.0",
         "react-type-animation": "^3.2.0",
         "vue": "^3.5.13",

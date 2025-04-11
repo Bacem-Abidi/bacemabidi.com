@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\ProjectCaseStudyController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\SettingsController;
-use App\Livewire\Admin\Dashboard;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProfilePhotoController;
 
 /*================ ADMIN ================*/
 // Auth Routes
@@ -23,12 +24,15 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group( function
     })->name('logout');
 });
 
+
 // Admin pages
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return redirect()->route('admin.dashboard'); // Redirect to /admin/dashboard
     });
-    Route::get('/dashboard', [Dashboard::class, 'render'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'render'])->name('admin.dashboard');
+
+    Route::delete('/user/profile-photo', [ProfilePhotoController::class, 'destroy'])->name('user-profile-photo.destroy');
 
     // Projects Routes
     Route::prefix('/projects')->group(function () {

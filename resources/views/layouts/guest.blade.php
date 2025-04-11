@@ -18,9 +18,6 @@
     <!-- Scripts -->
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/admin/app.js', 'resources/js/admin/theme-admin.js', 'resources/css/admin.css'])
-
-    <!-- Styles -->
-    @livewireStyles
 </head>
 
 <body class="antialiased font-robotoMono">
@@ -59,8 +56,6 @@
     </div>
 
 
-
-    @livewireScripts
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<x-form-section submit="updateProfileInformation">
+<x-form-section submit="{{ route('user-profile-information.update') }}">
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
@@ -12,7 +12,7 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{ photoName: null, photoPreview: null }" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
-                <input type="file" id="photo" class="hidden" wire:model.live="photo" x-ref="photo"
+                <input type="file" id="photo" class="hidden" name="photo" x-ref="photo"
                     x-on:change="
                                     photoName = $refs.photo.files[0].name;
                                     const reader = new FileReader();
@@ -26,7 +26,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}"
+                    <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}"
                         class="rounded-full size-20 object-cover">
                 </div>
 
@@ -37,14 +37,14 @@
                     </span>
                 </div>
 
-                <x-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-admin.secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
-                </x-secondary-button>
+                </x-admin.secondary-button>
 
-                @if ($this->user->profile_photo_path)
-                    <x-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
+                @if (auth()->user()->profile_photo_path)
+                    <x-admin.secondary-button type="button" class="mt-2" id="remove-photo-btn">
                         {{ __('Remove Photo') }}
-                    </x-secondary-button>
+                    </x-admin.secondary-button>
                 @endif
 
                 <x-admin.form.input-error for="photo" class="mt-2" />
@@ -54,16 +54,16 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-admin.form.label for="name" value="{{ __('Name') }}" />
-            <x-admin.form.input id="name" type="text" class="mt-1 block w-full" wire:model="state.name" required
-                autocomplete="name" />
+            <x-admin.form.input id="name" type="text" class="mt-1 block w-full" name="name" required
+                autocomplete="name" value="{{ auth()->user()->name }}" />
             <x-admin.form.input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-admin.form.label for="email" value="{{ __('Email') }}" />
-            <x-admin.form.input id="email" type="email" class="mt-1 block w-full" wire:model="state.email"
-                required autocomplete="username" />
+            <x-admin.form.input id="email" type="email" class="mt-1 block w-full" name="email" required
+                autocomplete="username" value="{{ auth()->user()->email }}" />
             <x-admin.form.input-error for="email" class="mt-2" />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) &&
@@ -97,3 +97,25 @@
         </x-admin.form.btn-submit>
     </x-slot>
 </x-form-section>
+<script>
+    document.getElementById('remove-photo-btn')?.addEventListener('click', function() {
+        fetch("{{ route('user-profile-photo.destroy') }}", {
+                method: "DELETE",
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json',
+                },
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to delete.');
+                return res.json();
+            })
+            .then(data => {
+                location.reload(); // or dynamically update the photo preview
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Something went wrong.');
+            });
+    });
+</script>

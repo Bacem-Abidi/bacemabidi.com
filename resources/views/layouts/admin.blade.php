@@ -25,16 +25,15 @@
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/admin/app.js', 'resources/js/admin/theme-admin.js', 'resources/css/admin.css'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Styles -->
-    @livewireStyles
 </head>
 
 <body class="antialiased bg-white text-black dark:bg-background dark:text-text font-robotoMono overflow-x-hidden ">
     <x-admin.sidebar />
     <div class="min-h-screen bg-white dark:bg-background wrapper d-flex flex-column min-vh-100">
-        {{-- @livewire('navigation-menu') --}}
+        {{-- @livewire('navigation-menu', ['header' => $header]) --}}
+        @include('navigation-menu', ['header' => $header])
 
-        <!-- Page Heading -->
+        {{-- <!-- Page Heading -->
         @if (isset($header))
             <header
                 class="sticky inset-x-0 top-0 w-full bg-white dark:bg-background z-40  border-b border-gray-300 dark:border-gray-500">
@@ -75,7 +74,7 @@
                     </div>
                 </div>
             </header>
-        @endif
+        @endif --}}
 
 
         <!-- Page Content -->
@@ -86,7 +85,6 @@
 
     @stack('modals')
 
-    {{-- @livewireScripts --}}
 </body>
 
 </html>

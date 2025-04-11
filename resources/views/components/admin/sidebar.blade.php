@@ -1,7 +1,8 @@
 <!-- component -->
 <div
     class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r z-50 border-gray-300 dark:bg-background dark:border-gray-500">
-    <div class="flex items-center justify-between p-6 border-b border-gray-300 dark:border-gray-500">
+    <div class="bg-gray-300 dark:bg-gray-500 h-[1px] w-64 absolute top-[84px]"></div>
+    <div class="flex items-center justify-between p-7 border-gray-300 dark:border-gray-500">
         <x-admin.application-mark class="font-medium text-xl text-gray-800 dark:text-gray-200 leading-tight" />
     </div>
     <div class="overflow-y-auto overflow-x-hidden flex-grow">

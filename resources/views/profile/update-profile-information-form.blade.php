@@ -47,7 +47,7 @@
                     </x-admin.secondary-button>
                 @endif
 
-                <x-admin.form.input-error for="photo" class="mt-2" />
+                <x-admin.form.input-error for="photo" class="mt-2" bag="updateProfileInformation" />
             </div>
         @endif
 
@@ -56,7 +56,7 @@
             <x-admin.form.label for="name" value="{{ __('Name') }}" />
             <x-admin.form.input id="name" type="text" class="mt-1 block w-full" name="name" required
                 autocomplete="name" value="{{ auth()->user()->name }}" />
-            <x-admin.form.input-error for="name" class="mt-2" />
+            <x-admin.form.input-error for="name" class="mt-2" bag="updateProfileInformation" />
         </div>
 
         <!-- Email -->
@@ -64,7 +64,7 @@
             <x-admin.form.label for="email" value="{{ __('Email') }}" />
             <x-admin.form.input id="email" type="email" class="mt-1 block w-full" name="email" required
                 autocomplete="username" value="{{ auth()->user()->email }}" />
-            <x-admin.form.input-error for="email" class="mt-2" />
+            <x-admin.form.input-error for="email" class="mt-2" bag="updateProfileInformation" />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) &&
                     !$this->user->hasVerifiedEmail())

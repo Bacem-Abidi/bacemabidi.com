@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfilePhotoController;
+use Laravel\Fortify\Http\Controllers\PasswordController;
 
 /*================ ADMIN ================*/
 // Auth Routes
@@ -33,7 +34,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'render'])->name('admin.dashboard');
 
     Route::delete('/user/profile-photo', [ProfilePhotoController::class, 'destroy'])->name('user-profile-photo.destroy');
-
+    Route::put('/user/password', [PasswordController::class, 'update'])
+    ->name('password.update');
     // Projects Routes
     Route::prefix('/projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('admin.projects.index');
